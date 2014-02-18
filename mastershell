@@ -29,6 +29,7 @@ pip --version || exit 1
 pip install cffi || exit 1
 
 # Install spreads from GitHub
+echo "Nothing fatal here. If updating spreads."
 git clone https://github.com/jbaiter/spreads.git /usr/src/spreads
 git pull https://github.com/jbaiter/spreads.git /usr/src/spreads || exit 1
 cd /usr/src/spreads || exit 1
