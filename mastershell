@@ -3,8 +3,8 @@
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Setup environment
-if [ -d ${USER_HOME}/"Arbeitsfläche" ]; then
- ln -s ${USER_HOME}/"Arbeitsfläche" ${USER_HOME}/Desktop
+if [ -d ${USER_HOME}/Arbeitsfläche ]; then
+ ln -s ${USER_HOME}/Arbeitsfläche ${USER_HOME}/Desktop
 fi
 
 cp -fr updater.sh ../
