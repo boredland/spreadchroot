@@ -3,7 +3,7 @@
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Setup environment
-if [ -d $USER_HOME/"ArbeitsflÃ¤che" ]; then
+if [ -d $USER_HOME/"Arbeitsfläche" ]; then
  echo "found"
  cd $USER_HOME
  mkdir Desktop
