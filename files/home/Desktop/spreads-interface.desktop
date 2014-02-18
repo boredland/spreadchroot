@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Exec=firefox http://localhost:5000/
+Icon=/usr/share/pixmaps/gksu-root-terminal.png
+Name=Spreads Interface
+Comment=Opens the spreads web interface
+Categories=Application;
+

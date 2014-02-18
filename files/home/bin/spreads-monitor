@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Matti Kariluoma <matti@kariluo.ma> 2014 Jan 31
+
+tail -f /var/log/spreads/spreads.log &
+tail -f ~/.config/spreads/spreads.log &
+
+# keep the terminal open
+while [ true ]; do sleep 2; done
+

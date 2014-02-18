@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Exec=xterm -e ~/bin/spreads-monitor
+Icon=/usr/share/pixmaps/gksu-root-terminal.png
+Name=Spreads Monitor
+Comment=Open and view the spreads logs
+Categories=Application;
+
