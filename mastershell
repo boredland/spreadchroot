@@ -1,6 +1,6 @@
 #!/bin/bash
 ## For usage with the account you plan to use spreads with!
-## Acutally this installs much to much (pyside compiling with cmake and qt4-qmake ..) and is not usecase-sensitive.
+## Acutally this installs much to much (pyside compiling with cmake and qt4-qmake, could use & link the binary instead ..) and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Update packages
@@ -17,7 +17,7 @@ rm -f /etc/udev/rules.d/70-persistent-net.rules || exit 1
 apt-get -y install build-essential cython libffi-dev libjpeg8-dev liblua5.1-0\
             libudev-dev libusb-1.0-0-dev libusb-dev nginx python2.7-dev\
             python-pyexiv2 python-netifaces python-pip python-yaml unzip\
-            python-pyside cmake qt4-qmake libxml2-dev libxslt1-dev || exit 1
+            cmake qt4-qmake libxml2-dev libxslt1-dev || exit 1
 wget --continue https://www.assembla.com/spaces/chdkptp/documents/aDDsvQyhOr465JacwqjQYw/download/aDDsvQyhOr465JacwqjQYw -O /tmp/chdkptp.zip || exit 1
 unzip -o -d /usr/local/lib/chdkptp /tmp/chdkptp.zip || exit 1
 rm -rf /tmp/chdkptp.zip || exit 1
