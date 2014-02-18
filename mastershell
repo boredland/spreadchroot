@@ -29,9 +29,10 @@ pip --version || exit 1
 pip install cffi || exit 1
 
 # Install spreads from GitHub
-echo "Nothing fatal here. If updating spreads."
+echo "## Nothing fatal here. If updating spreads."
 git clone https://github.com/jbaiter/spreads.git /usr/src/spreads
 cd /usr/src/spreads || exit 1
+echo "## Checking for Updates."
 git pull || exit 1
 # https://github.com/openxc/openxc-python/issues/18
 pip install --pre pyusb || exit 1
