@@ -1,6 +1,6 @@
 #!/bin/bash
 ## For usage with the account you plan to use spreads with!
-## Acutally this installs much to much and is not usecase-sensitive.
+## Acutally this installs much to much (pyside compiling with cmake..) and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Update packages
