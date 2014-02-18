@@ -3,15 +3,7 @@
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Setup environment
-if [ -d $USER_HOME/"Arbeitsfläche" ]; then
- echo "found"
- cd $USER_HOME
- mkdir Desktop
- ln -s $USER_HOME/ArbeitsflÃ¤che ${USER_HOME}/Desktop
- cd $DELIVERY_DIR
-fi
-
-cp -fr updater.sh ../
+cp -fr files/home/* $USER_HOME
 # Update packages
 apt-get update || exit 1
 # Install some basic tools and libraries
