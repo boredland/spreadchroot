@@ -1,6 +1,6 @@
 #!/bin/bash
 ## For usage with the account you plan to use spreads with!
-## Acutally this installs much to much (pyside compiling with cmake and qt4-qmake ..) and is not usecase-sensitive.
+## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Update packages
@@ -30,9 +30,6 @@ pip --version || exit 1
 
 # Install CFFI
 pip install cffi || exit 1
-
-# Install PySide
-ln -s /usr/lib/python2.7/dist-packages/PySide ~/.spreads/lib/python2.7/site-packages/PySide || exit 1
 
 # Install spreads from GitHub
 echo "## Nothing fatal here. If updating spreads."
