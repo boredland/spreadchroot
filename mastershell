@@ -3,7 +3,7 @@
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Setup environment
-cp -fr $DELIVERY_DIR/files/home/. /home/$USER/
+cp -fra $DELIVERY_DIR/files/home/. /home/$USER/
 # Update packages
 apt-get update || exit 1
 # Install some basic tools and libraries
