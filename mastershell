@@ -1,4 +1,5 @@
 #!/bin/bash
+## For usage with the account you plan to use spreads with!
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Update packages
