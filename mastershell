@@ -44,7 +44,7 @@ pip install git+https://github.com/gbishop/cython-hidapi.git || exit 1
 # Create spreads configuration directoy
 mkdir -p /home/pi/.config/spreads || exit 1
 cp $DELIVERY_DIR/files/config.yaml /home/pi/.config/spreads || exit 1
-chown -R pi /home/pi/.config/spreads || exit 1
+chown -R $USER /home/pi/.config/spreads || exit 1
 
 # install alt start script
 mkdir /var/log/spreads
