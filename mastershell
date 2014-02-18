@@ -2,8 +2,8 @@
 ## For usage with the account you plan to use spreads with!
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# Copy the update.sh one folder up, so we can call it later for further updates
-cp update.sh ../
+# Copy the updater.sh one folder up, so we can call it later for further updates
+cp updater.sh ../
 # Update packages
 apt-get update || exit 1
 # Install some basic tools and libraries
