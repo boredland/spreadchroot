@@ -2,10 +2,7 @@
 ## For usage with the account you plan to use spreads with!
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# Setup environment
-cd $DELIVERY_DIR/files/home/
-cp -fra * /home/$USER
-cd $DELIVERY_DIR
+
 # Update packages
 apt-get update || exit 1
 # Install some basic tools and libraries
@@ -50,25 +47,31 @@ pip install git+https://github.com/gbishop/cython-hidapi.git || exit 1
 
 # Create spreads configuration directoy
 mkdir -p /home/$USER/.config/spreads || exit 1
-cp $DELIVERY_DIR/files/config.yaml /home/$USER/.config/spreads || exit 1
+cp -fr $DELIVERY_DIR/files/config.yaml /home/$USER/.config/spreads || exit 1
 chown -R $USER /home/$USER/.config/spreads || exit 1
 
 # install alt start script
 mkdir /var/log/spreads
 chmod a+rwx /var/log/spreads
-cp $DELIVERY_DIR/files/usr.local.bin.startspread \
+cp -fr $DELIVERY_DIR/files/usr.local.bin.startspread \
 		/usr/local/bin/startspread || exit 1
 
 # Install spreads init script
-cp $DELIVERY_DIR/files/spread /etc/init.d/spread || exit 1
+cp -fr $DELIVERY_DIR/files/spread /etc/init.d/spread || exit 1
 chmod a+x /etc/init.d/spread || exit 1
 
 # Add spreads init script to default boot sequence
 update-rc.d spread defaults || exit 1
 
 # Install nginx configuration
-cp $DELIVERY_DIR/files/nginx_default /etc/nginx/sites-enabled/default || exit 1
+cp -fr $DELIVERY_DIR/files/nginx_default /etc/nginx/sites-enabled/default || exit 1
 chmod a+x /etc/nginx/sites-enabled/default || exit 1
 
 # Add nginx init script to default boot sequence
 update-rc.d nginx defaults || exit 1
+
+# Setup environment
+cp -fra $DELIVERY_DIR/files/home/bin /home/$USER/ || exit 1
+cp -fra $DELIVERY_DIR/files/home/Desktop /home/$USER/ || exit 1
+cp -fra $DELIVERY_DIR/files/home/bashrc /home/$USER/ || exit 1
+
