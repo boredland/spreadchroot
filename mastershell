@@ -1,6 +1,4 @@
 #!/bin/bash
-debconf-set-selections /debconf.set || exit 1
-rm -f /debconf.set || exit 1
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Update packages
