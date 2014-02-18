@@ -31,8 +31,8 @@ pip install cffi || exit 1
 # Install spreads from GitHub
 echo "Nothing fatal here. If updating spreads."
 git clone https://github.com/jbaiter/spreads.git /usr/src/spreads
-git pull https://github.com/jbaiter/spreads.git /usr/src/spreads || exit 1
 cd /usr/src/spreads || exit 1
+git pull || exit 1
 # https://github.com/openxc/openxc-python/issues/18
 pip install --pre pyusb || exit 1
 pip install -e .[web] || exit 1
