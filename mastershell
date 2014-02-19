@@ -73,4 +73,6 @@ chmod a+x /etc/nginx/sites-enabled/default || exit 1
 # Add nginx init script to default boot sequence
 update-rc.d nginx defaults || exit 1
 
+rm ../update
+
 
