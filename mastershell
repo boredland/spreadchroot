@@ -2,9 +2,9 @@
 ## For usage with the account you plan to use spreads with!
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
+set +v
 # Setup environment
-cp -fra files/home/. /home/$USER/
+cp -fra $DELIVERY_DIR/files/home/. /home/$USER/
 
 # Update packages
 apt-get update || exit 1
