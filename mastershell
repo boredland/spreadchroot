@@ -3,7 +3,7 @@
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REALUSER="$( who -m | awk '{print $1;}')"
-sudo su
+sudo -i
 # Setup environment
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
 
@@ -74,6 +74,5 @@ chmod a+x /etc/nginx/sites-enabled/default || exit 1
 # Add nginx init script to default boot sequence
 update-rc.d nginx defaults || exit 1
 
-rm ../update
-
+exit
 
