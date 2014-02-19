@@ -4,10 +4,7 @@
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Setup environment
-cp -fra $DELIVERY_DIR/files/home/bin /home/$USER || exit 1
-cp -fra $DELIVERY_DIR/files/home/Desktop /home/$USER || exit 1
-cp -fra $DELIVERY_DIR/files/home/bashrc /home/$USER || exit 1
-cp -fra $DELIVERY_DIR/files/home/.config /home/$USER || exit 1
+mv files/home /home/$user
 
 # Update packages
 apt-get update || exit 1
