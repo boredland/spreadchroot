@@ -3,10 +3,11 @@
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REALUSER="$( who -m | awk '{print $1;}')"
-sudo -s <<EOF
+
 # Setup environment
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
 
+sudo -s <<EOF
 # Update packages
 apt-get update || exit 1
 # Install some basic tools and libraries
@@ -30,7 +31,7 @@ EOF
 
 # Get newest pip version
 pip install --upgrade pip || exit 1
-mv /usr/bin/pip /usr/bin/pip.old
+sudo mv /usr/bin/pip /usr/bin/pip.old
 ln -s /usr/local/bin/pip /usr/bin/pip
 pip --version || exit 1
 
