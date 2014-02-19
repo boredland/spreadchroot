@@ -7,7 +7,6 @@ REALUSER="$( who -m | awk '{print $1;}')"
 # Setup environment
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
 
-sudo -s <<EOF
 # Update packages
 apt-get update || exit 1
 # Install some basic tools and libraries
@@ -27,11 +26,9 @@ wget --continue https://www.assembla.com/spaces/chdkptp/documents/aDDsvQyhOr465J
 unzip -o -d /usr/local/lib/chdkptp /tmp/chdkptp.zip || exit 1
 rm -rf /tmp/chdkptp.zip || exit 1
 
-EOF
-
 # Get newest pip version
 pip install --upgrade pip || exit 1
-sudo mv /usr/bin/pip /usr/bin/pip.old
+ mv /usr/bin/pip /usr/bin/pip.old
 ln -s /usr/local/bin/pip /usr/bin/pip
 pip --version || exit 1
 
@@ -40,10 +37,10 @@ pip install cffi || exit 1
 
 # Install spreads from GitHub
 echo "## Nothing fatal here. If updating spreads."
-sudo git clone https://github.com/jbaiter/spreads.git /usr/src/spreads
+git clone https://github.com/jbaiter/spreads.git /usr/src/spreads
 cd /usr/src/spreads || exit 1
 echo "## Checking for Updates."
-sudo git pull || exit 1
+git pull || exit 1
 # https://github.com/openxc/openxc-python/issues/18
 pip install --pre pyusb || exit 1
 pip install -e .[web] || exit 1
@@ -58,17 +55,17 @@ cp $DELIVERY_DIR/files/config.yaml /home/$REALUSER/.config/spreads || exit 1
 chown -R $REALUSER /home/$REALUSER/.config/spreads || exit 1
 
 # install alt start script
-sudo mkdir /var/log/spreads
-sudo chmod a+rwx /var/log/spreads
-sudo cp -fr $DELIVERY_DIR/files/usr.local.bin.startspread \
+mkdir /var/log/spreads
+chmod a+rwx /var/log/spreads
+cp -fr $DELIVERY_DIR/files/usr.local.bin.startspread \
 		/usr/local/bin/startspread || exit 1
 
 # Install spreads init script
-sudo cp -fr $DELIVERY_DIR/files/spread /etc/init.d/spread || exit 1
-sudo chmod a+x /etc/init.d/spread || exit 1
+cp -fr $DELIVERY_DIR/files/spread /etc/init.d/spread || exit 1
+chmod a+x /etc/init.d/spread || exit 1
 
 # Add spreads init script to default boot sequence
-sudo update-rc.d spread defaults || exit 1
+update-rc.d spread defaults || exit 1
 
 # Install nginx configuration
 cp -fr $DELIVERY_DIR/files/nginx_default /etc/nginx/sites-enabled/default || exit 1
