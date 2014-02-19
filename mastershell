@@ -8,8 +8,8 @@ REALUSER="$( who -m | awk '{print $1;}')"
 # Setup environment
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
 
-# Update packages
-apt-get update || exit 1
+# Update packages (removed, not needed when using update script.
+# apt-get update || exit 1
 # Install some basic tools and libraries
 apt-get -y install console-common console-data locales nginx nginx-light ntp || exit 1
 
