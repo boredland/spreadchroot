@@ -3,16 +3,17 @@
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REALUSER="$( who -m | awk '{print $1;}')"
+sudo su
 # Setup environment
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
 
 # Update packages
-sudo apt-get update || exit 1
+apt-get update || exit 1
 # Install some basic tools and libraries
-sudo apt-get -y install console-common console-data locales nginx nginx-light ntp || exit 1
+apt-get -y install console-common console-data locales nginx nginx-light ntp || exit 1
 
 # Setup udev rules
-sudo echo 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' > /etc/udev/rules.d/99-usb.rules || exit 1
+echo 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' > /etc/udev/rules.d/99-usb.rules || exit 1
 sed -i -e 's/KERNEL\!="eth\*|/KERNEL\!="/' /lib/udev/rules.d/75-persistent-net-generator.rules || exit 1
 rm -f /etc/udev/rules.d/70-persistent-net.rules || exit 1
 
