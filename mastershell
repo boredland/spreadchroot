@@ -3,7 +3,7 @@
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REALUSER="$( who -m | awk '{print $1;}')"
-sudo -i
+sudo -s <<EOF
 # Setup environment
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
 
@@ -25,6 +25,8 @@ apt-get -y install build-essential cython libffi-dev libjpeg8-dev liblua5.1-0\
 wget --continue https://www.assembla.com/spaces/chdkptp/documents/aDDsvQyhOr465JacwqjQYw/download/aDDsvQyhOr465JacwqjQYw -O /tmp/chdkptp.zip || exit 1
 unzip -o -d /usr/local/lib/chdkptp /tmp/chdkptp.zip || exit 1
 rm -rf /tmp/chdkptp.zip || exit 1
+
+EOF
 
 # Get newest pip version
 pip install --upgrade pip || exit 1
