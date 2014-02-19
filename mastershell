@@ -2,7 +2,7 @@
 ## For usage with the account you plan to use spreads with!
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-REALUSER="who -m | awk '{print $1;}'"
+REALUSER="$( who -m | awk '{print $1;}')"
 # Setup environment (Why not working??)
 echo $REALUSER
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
