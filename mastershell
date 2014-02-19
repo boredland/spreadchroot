@@ -3,8 +3,7 @@
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REALUSER="$( who -m | awk '{print $1;}')"
-# Setup environment (Why not working??)
-echo $REALUSER
+# Setup environment
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
 
 # Update packages
