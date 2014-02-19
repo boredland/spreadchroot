@@ -2,11 +2,19 @@
 ## For usage with the account you plan to use spreads with!
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# get the real username. needed when using with sudo (p.e. in the update shell you can find in files/home/bin)
+# get the real username. needed when using with sudo (f.e. in the update shell you can find in files/home/bin)
 REALUSER="$( who -m | awk '{print $1;}')"
 
-# Setup environment
+# Setup startup environment (sadly not for openbox)
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
+#legacy autostart for openbox (yeah. I need more clauses, i know..)
+if grep -Fxq "/usr/local/bin/startspread" /home/$REALUSER/.config/openbox/autostart
+then
+    echo "Autostart already installed."
+else
+    echo "## Spreads autostart" >> /home/$REALUSER/.config/openbox/autostart
+    echo "/usr/local/bin/startspread" >> /home/$REALUSER/.config/openbox/autostart
+fi
 
 # Update packages (removed, not needed when using update script.
 # apt-get update || exit 1
