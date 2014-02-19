@@ -2,9 +2,9 @@
 ## For usage with the account you plan to use spreads with!
 ## Acutally this installs much to much and is not usecase-sensitive.
 DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo $USER
+REALUSER="who -m | awk '{print $1;}'"
 # Setup environment (Why not working??)
-cp -fra $DELIVERY_DIR/files/home/. /home/$USER/
+cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
 
 # Update packages
 apt-get update || exit 1
@@ -49,9 +49,9 @@ python setup.py install || exit 1
 pip install git+https://github.com/gbishop/cython-hidapi.git || exit 1
 
 # Create spreads configuration directoy
-mkdir -p /home/$USER/.config/spreads || exit 1
-cp $DELIVERY_DIR/files/config.yaml /home/$USER/.config/spreads || exit 1
-chown -R $USER /home/$USER/.config/spreads || exit 1
+mkdir -p /home/$REALUSER/.config/spreads || exit 1
+cp $DELIVERY_DIR/files/config.yaml /home/$REALUSER/.config/spreads || exit 1
+chown -R $REALUSER /home/$REALUSER/.config/spreads || exit 1
 
 # install alt start script
 mkdir /var/log/spreads
