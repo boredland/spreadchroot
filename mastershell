@@ -14,6 +14,8 @@ then
 else
     echo "## Spreads autostart" >> /home/$REALUSER/.config/openbox/autostart
     echo "/usr/local/bin/startspread" >> /home/$REALUSER/.config/openbox/autostart
+    echo "## Spreads autostart web-gui" >> /home/$REALUSER/.config/openbox/autostart
+    echo "xdg-open http://localhost:5000/" >> /home/$REALUSER/.config/openbox/autostart
 fi
 
 # Update packages (removed, not needed when using update script.
