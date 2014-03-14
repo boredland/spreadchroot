@@ -53,12 +53,6 @@ cd /usr/src/spreads || exit 1
 echo "## Checking for Updates."
 git pull || exit 1
 
-#install raspberry remote
-cd ~
-git clone git://github.com/xkonni/raspberry-remote.git
-cd raspberry-remote
-make send
-
 # https://github.com/openxc/openxc-python/issues/18
 pip install --pre pyusb || exit 1
 pip install -e .[web] || exit 1
