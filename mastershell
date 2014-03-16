@@ -55,6 +55,8 @@ pip --version || exit 1
 
 # Install CFFI
 pip install cffi || exit 1
+# Install CFFI
+pip install huey || exit 1
 
 # Install spreads from GitHub
 echo "## Nothing fatal here. If updating spreads."
