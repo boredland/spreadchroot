@@ -8,15 +8,15 @@ REALUSER="$( who -m | awk '{print $1;}')"
 # Setup startup environment (sadly not for openbox)
 cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
 #legacy autostart for openbox (yeah. I need more clauses, i know..)
-if grep -Fxq "/usr/local/bin/startspread" /home/$REALUSER/.config/openbox/autostart
-then
-    echo "Autostart already installed."
-else
-    echo "## Spreads autostart" >> /home/$REALUSER/.config/openbox/autostart
-    echo "/usr/local/bin/startspread" >> /home/$REALUSER/.config/openbox/autostart
-    echo "## Spreads autostart web-gui" >> /home/$REALUSER/.config/openbox/autostart
-    echo "xdg-open http://localhost:5000/" >> /home/$REALUSER/.config/openbox/autostart
-fi
+#if grep -Fxq "/usr/local/bin/startspread" /home/$REALUSER/.config/openbox/autostart
+#then
+#    echo "Autostart already installed."
+#else
+#    echo "## Spreads autostart" >> /home/$REALUSER/.config/openbox/autostart
+#    echo "/usr/local/bin/startspread" >> /home/$REALUSER/.config/openbox/autostart
+#    echo "## Spreads autostart web-gui" >> /home/$REALUSER/.config/openbox/autostart
+#    echo "xdg-open http://localhost:5000/" >> /home/$REALUSER/.config/openbox/autostart
+#fi
 
 # Update packages (removed, not needed when using update script.
 # apt-get update || exit 1
@@ -57,7 +57,6 @@ pip --version || exit 1
 pip install cffi || exit 1
 # Install CFFI
 sudo pip install redis || exit 1
-
 sudo pip install huey || exit 1
 
 # Install spreads from GitHub
