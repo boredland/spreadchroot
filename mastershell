@@ -28,6 +28,16 @@ echo 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' > /etc/udev/rules.d/99-usb.r
 sed -i -e 's/KERNEL\!="eth\*|/KERNEL\!="/' /lib/udev/rules.d/75-persistent-net-generator.rules || exit 1
 rm -f /etc/udev/rules.d/70-persistent-net.rules || exit 1
 
+# Install remote
+git clone git://git.drogon.net/wiringPi
+cd wiringPi
+./build
+cd ..
+git clone git://github.com/xkonni/raspberry-remote.git
+cd raspberry-remote
+make send
+cd ~
+
 # Install spreads dependencies
 apt-get -y install build-essential cython libffi-dev libjpeg8-dev liblua5.1-0\
             libudev-dev libusb-1.0-0-dev libusb-dev nginx python2.7-dev\
