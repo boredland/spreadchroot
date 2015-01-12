@@ -16,6 +16,9 @@ sudo pip install cffi || exit 1
 sudo pip install redis || exit 1
 sudo pip install huey || exit 1
 sudo pip install pyusb || exit 1
+sudo pip install wand || exit 1
+sudo pip install flask || exit 1
+
 
 # Install cython-hidapi from GitHub
 sudo pip install git+https://github.com/gbishop/cython-hidapi.git || exit 1
