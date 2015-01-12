@@ -1,60 +1,17 @@
-#!/bin/bash
-## For usage with the account you plan to use spreads with!
-## Acutally this installs much to much and is not usecase-sensitive.
-DELIVERY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# get the real username. needed when using with sudo (f.e. in the update shell you can find in files/home/bin)
-REALUSER="$( who -m | awk '{print $1;}')"
-
-# Setup startup environment (sadly not for openbox)
-cp -fra $DELIVERY_DIR/files/home/. /home/$REALUSER/
-#legacy autostart for openbox (yeah. I need more clauses, i know..)
-#if grep -Fxq "/usr/local/bin/startspread" /home/$REALUSER/.config/openbox/autostart
-#then
-#    echo "Autostart already installed."
-#else
-#    echo "## Spreads autostart" >> /home/$REALUSER/.config/openbox/autostart
-#    echo "/usr/local/bin/startspread" >> /home/$REALUSER/.config/openbox/autostart
-#    echo "## Spreads autostart web-gui" >> /home/$REALUSER/.config/openbox/autostart
-#    echo "xdg-open http://localhost:5000/" >> /home/$REALUSER/.config/openbox/autostart
-#fi
-
-# Update packages (removed, not needed when using update script.
-# apt-get update || exit 1
-# Install some basic tools and libraries
-apt-get -y install console-common console-data locales nginx nginx-light ntp || exit 1
-
-# Setup udev rules
-echo 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' > /etc/udev/rules.d/99-usb.rules || exit 1
-sed -i -e 's/KERNEL\!="eth\*|/KERNEL\!="/' /lib/udev/rules.d/75-persistent-net-generator.rules || exit 1
-rm -f /etc/udev/rules.d/70-persistent-net.rules || exit 1
-
-# Install remote
-git clone git://git.drogon.net/wiringPi
-cd wiringPi
-./build
-cd ..
-git clone git://github.com/xkonni/raspberry-remote.git
-cd raspberry-remote
-make send
-cd ~
-
-# Install spreads dependencies
-apt-get -y install build-essential cython libffi-dev libjpeg8-dev liblua5.1-0\
-            libudev-dev libusb-1.0-0-dev libusb-dev nginx python2.7-dev\
-            python-pyexiv2 python-netifaces python-pip python-yaml unzip\
-            python-pyside iceweasel xterm || exit 1
+# Install basic tools
+sudo apt-get install nano screen build-essential parallel wget libmagickwand-dev libleptonica-dev libqt4-dev libxml2-dev libtool automake exactimage tesseract-ocr tesseract-ocr-deu* libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git-core bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 build-essential python-pyexiv2 python-pyside iceweasel xterm python-netifaces python-pip python-yaml unzip cython libffi-dev libjpeg8-dev liblua5.1-0  libudev-dev libusb-1.0-0-dev libusb-dev nginx python2.7-dev libopenssl-ruby1.9.1 libssl-dev zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev libboost1.55-all-dev libxrender-dev
 wget --continue https://www.assembla.com/spaces/chdkptp/documents/aDDsvQyhOr465JacwqjQYw/download/aDDsvQyhOr465JacwqjQYw -O /tmp/chdkptp.zip || exit 1
 unzip -o -d /usr/local/lib/chdkptp /tmp/chdkptp.zip || exit 1
 rm -rf /tmp/chdkptp.zip || exit 1
 
 # Get newest pip version
-pip install --upgrade pip || exit 1
+sudo pip install --upgrade pip || exit 1
  mv /usr/bin/pip /usr/bin/pip.old
 ln -s /usr/local/bin/pip /usr/bin/pip
 pip --version || exit 1
 
 # Install CFFI
-pip install cffi || exit 1
+sudo pip install cffi || exit 1
 # Install CFFI
 sudo pip install redis || exit 1
 sudo pip install huey || exit 1
@@ -67,37 +24,37 @@ echo "## Checking for Updates."
 git pull || exit 1
 
 # https://github.com/openxc/openxc-python/issues/18
-pip install --pre pyusb || exit 1
+sudo pip install --pre pyusb || exit 1
 #pip install -e .[web] || exit 1
-python setup.py install || exit 1
+sudo python setup.py install || exit 1
 
 # Install cython-hidapi from GitHub
-pip install git+https://github.com/gbishop/cython-hidapi.git || exit 1
+sudo pip install git+https://github.com/gbishop/cython-hidapi.git || exit 1
 
-# Create spreads configuration directoy
-mkdir -p /home/$REALUSER/.config/spreads || exit 1
-cp $DELIVERY_DIR/files/config.yaml /home/$REALUSER/.config/spreads || exit 1
-chown -R $REALUSER /home/$REALUSER/.config/spreads || exit 1
+# Install spreads
+sudo pip install http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz || exit 1
 
-# install alt start script
-mkdir /var/log/spreads
-chmod a+rwx /var/log/spreads
-cp -fr $DELIVERY_DIR/files/usr.local.bin.startspread \
-		/usr/local/bin/startspread || exit 1
+wget -O scantailor-enhanced-20140214.tar.bz2 http://downloads.sourceforge.net/project/scantailor/scantailor-devel/enhanced/scantailor-enhanced-20140214.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fscantailor%2Ffiles%2Fscantailor-devel%2Fenhanced%2F&ts=1401223653&use_mirror=optimate
+tar xvjf scantailor-enhanced-20140214.tar.bz2
+git clone https://github.com/ifad/pdfbeads
+git clone https://github.com/agl/jbig2enc
 
-# Install spreads init script
-cp -fr $DELIVERY_DIR/files/spread /etc/init.d/spread || exit 1
-chmod a+x /etc/init.d/spread || exit 1
+## make and install jbig2enc
+cd jbig2enc
+./autogen.sh
+./configure
+make
+sudo make install
+cd ..
 
-# Add spreads init script to default boot sequence
-update-rc.d spread defaults || exit 1
+## make and install pdfbeads
+cd pdfbeads
+gem build pdfbeads.gemspec 
+sudo gem install pdfbeads-1.0.11.gem
+cd ..
 
-# Install nginx configuration
-cp -fr $DELIVERY_DIR/files/nginx_default /etc/nginx/sites-enabled/default || exit 1
-chmod a+x /etc/nginx/sites-enabled/default || exit 1
-
-# Add nginx init script to default boot sequence
-update-rc.d nginx defaults || exit 1
-
-exit
-
+## make and install scantailor
+cd scantailor-enhanced
+cmake .
+make
+sudo make install
