@@ -24,7 +24,6 @@ sudo pip install git+https://github.com/gbishop/cython-hidapi.git || exit 1
 sudo pip install http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz || exit 1
 
 wget -O scantailor-enhanced-20140214.tar.bz2 http://downloads.sourceforge.net/project/scantailor/scantailor-devel/enhanced/scantailor-enhanced-20140214.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fscantailor%2Ffiles%2Fscantailor-devel%2Fenhanced%2F&ts=1401223653&use_mirror=optimate
-tar xvjf scantailor-enhanced-20140214.tar.bz2
 git clone https://github.com/ifad/pdfbeads
 git clone https://github.com/agl/jbig2enc
 
@@ -43,6 +42,7 @@ sudo gem install pdfbeads-1.0.11.gem
 cd ..
 
 ## make and install scantailor
+tar xvjf scantailor-enhanced-20140214.tar.bz2
 cd scantailor-enhanced
 cmake .
 make
