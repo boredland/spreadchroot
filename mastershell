@@ -16,10 +16,6 @@ sudo pip install cffi || exit 1
 sudo pip install redis || exit 1
 sudo pip install huey || exit 1
 
-# Install spreads from GitHub
-echo "## Nothing fatal here. If updating spreads."
-git clone https://github.com/DIYBookScanner/spreads.git /usr/src/spreads
-cd /usr/src/spreads || exit 1
 echo "## Checking for Updates."
 git pull || exit 1
 
