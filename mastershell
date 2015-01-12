@@ -1,12 +1,12 @@
 # Install basic tools
 sudo apt-get install nano screen build-essential parallel wget libmagickwand-dev libleptonica-dev libqt4-dev libxml2-dev libtool automake exactimage tesseract-ocr tesseract-ocr-deu* libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git-core bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 build-essential python-pyexiv2 python-pyside iceweasel xterm python-netifaces python-pip python-yaml unzip cython libffi-dev libjpeg8-dev liblua5.1-0  libudev-dev libusb-1.0-0-dev libusb-dev nginx python2.7-dev libopenssl-ruby1.9.1 libssl-dev zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev libboost1.55-all-dev libxrender-dev
-wget --continue https://www.assembla.com/spaces/chdkptp/documents/aDDsvQyhOr465JacwqjQYw/download/aDDsvQyhOr465JacwqjQYw -O /tmp/chdkptp.zip || exit 1
-unzip -o -d /usr/local/lib/chdkptp /tmp/chdkptp.zip || exit 1
-rm -rf /tmp/chdkptp.zip || exit 1
+sudo wget --continue https://www.assembla.com/spaces/chdkptp/documents/aDDsvQyhOr465JacwqjQYw/download/aDDsvQyhOr465JacwqjQYw -O /tmp/chdkptp.zip || exit 1
+sudo unzip -o -d /usr/local/lib/chdkptp /tmp/chdkptp.zip || exit 1
+sudo rm -rf /tmp/chdkptp.zip || exit 1
 
 # Get newest pip version
 sudo pip install --upgrade pip || exit 1
- mv /usr/bin/pip /usr/bin/pip.old
+sudo mv /usr/bin/pip /usr/bin/pip.old
 ln -s /usr/local/bin/pip /usr/bin/pip
 pip --version || exit 1
 
