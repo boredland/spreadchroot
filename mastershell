@@ -18,6 +18,8 @@ sudo pip install huey || exit 1
 sudo pip install pyusb || exit 1
 sudo pip install wand || exit 1
 sudo pip install flask || exit 1
+sudo pip install hidapi || exit 1
+
 
 
 # Install cython-hidapi from GitHub
