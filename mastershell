@@ -1,85 +1,31 @@
-# Install basic tools
-sudo apt-get install nano screen build-essential parallel wget libmagickwand-dev libleptonica-dev libqt4-dev libxml2-dev libtool automake exactimage libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git-core bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 build-essential python-pyexiv2 python-pyside iceweasel xterm python-netifaces python-pip python-yaml unzip cython libffi-dev libjpeg8-dev liblua5.1-0  libudev-dev libusb-1.0-0-dev libusb-dev nginx python2.7-dev libopenssl-ruby1.9.1 libssl-dev zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev libboost1.55-all-dev libxrender-dev
-sudo wget --continue https://www.assembla.com/spaces/chdkptp/documents/aDDsvQyhOr465JacwqjQYw/download/aDDsvQyhOr465JacwqjQYw -O /tmp/chdkptp.zip || exit 1
-sudo unzip -o -d /usr/local/lib/chdkptp /tmp/chdkptp.zip || exit 1
-sudo rm -rf /tmp/chdkptp.zip || exit 1
+#!/bin/bash
+set -e
 
-# Get newest pip version
-sudo pip install --upgrade pip || exit 1
-sudo mv /usr/bin/pip /usr/bin/pip.old
-ln -s /usr/local/bin/pip /usr/bin/pip
-pip --version || exit 1
+# Install spreads dependencies
+if [ -e $DELIVERY_DIR/spreads-sdist.tar.gz ]; then
+    apt-get -y --force-yes install --no-install-recommends \
+        chdkptp python python-colorama python-yaml python-concurrent.futures \
+        python-blinker python-roman python-usb python-psutil \
+        python-jpegtran python-hidapi-cffi python-isbnlib python-flask \
+        python-requests python-wand python-zipstream python-netifaces \
+        python-dbus liblua5.2-dev libusb-dev
+    apt-get -y install python-pip build-essential python2.7-dev pkg-config
+    pip install tornado
+    pip install lupa --install-option="--no-luajit"
+    pip install $DELIVERY_DIR/spreads-sdist.tar.gz
+    apt-get -y remove --purge --auto-remove build-essential
+else
+    apt-get -y --force-yes install spreads spreads-web chdkptp
+fi
 
-# Install CFFI
-sudo pip install cffi || exit 1
-# Install CFFI
-sudo pip install redis || exit 1
-sudo pip install huey || exit 1
-sudo pip install pyusb || exit 1
-sudo pip install wand || exit 1
-sudo pip install flask || exit 1
-sudo pip install hidapi || exit 1
+# Create spreads configuration directoy
+mkdir -p /home/spreads/.config/spreads
+cp $DELIVERY_DIR/files/config.yaml /home/spreads/.config/spreads
+chown -R spreads /home/spreads/.config/spreads
 
+# Install spreads init script
+cp $DELIVERY_DIR/files/spread /etc/init.d/spread
+chmod a+x /etc/init.d/spread
 
-
-# Install cython-hidapi from GitHub
-sudo pip install git+https://github.com/gbishop/cython-hidapi.git || exit 1
-
-# Install spreads
-sudo pip install http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz || exit 1
-
-wget -O scantailor-enhanced-20140214.tar.bz2 http://downloads.sourceforge.net/project/scantailor/scantailor-devel/enhanced/scantailor-enhanced-20140214.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fscantailor%2Ffiles%2Fscantailor-devel%2Fenhanced%2F&ts=1401223653&use_mirror=optimate
-git clone https://github.com/ifad/pdfbeads
-git clone https://github.com/agl/jbig2enc
-
-## make and install jbig2enc
-cd jbig2enc
-./autogen.sh
-./configure
-make -j
-sudo make install
-cd ..
-
-## make and install pdfbeads
-cd pdfbeads
-gem build pdfbeads.gemspec 
-sudo gem install pdfbeads-1.0.11.gem
-cd ..
-
-## make and install scantailor
-tar xvjf scantailor-enhanced-20140214.tar.bz2
-cd scantailor-enhanced
-cmake .
-make -j
-sudo make install
-#echo "[s]tandard or [n]vidia (opencl) edition of tesseract?"
-#read edition
-#building opencl version of tesseract
-#if $edition=n 
-sudo apt-get install opencl-headers genometools
-
-echo Downloading cuda, install to default paths! you dont need to install the proprietary drivers if you already installed them
-wget http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_6.5.14_linux_64.run
-chmod +x cuda_6.5.14_linux_64.run
-sudo ./cuda_6.5.14_linux_64.run
-sudo ldconfig
-sudo ln -s /usr/local/cuda/lib/libOpenCL.so /usr/lib/libOpenCL.so.1.1
-
-wget -O tesseract-3.03-rc1.tar.gz https://drive.google.com/uc?id=0B7l10Bj_LprhSGN2bTYwemVRREU&export=download
-wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
-wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.deu.tar.gz
-wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.01.osd.tar.gz
-
-tar -xvzf tesseract-3.03-rc1.tar.gz
-tar -xvzf tesseract-ocr-3.02.eng.tar.gz
-tar -xvzf tesseract-ocr-3.02.deu.tar.gz
-tar -xvzf tesseract-ocr-3.01.osd.tar.gz
-sudo mv tesseract-ocr/tessdata/* /usr/share/tesseract-ocr/tessdata/
-cd tesseract-3.03
-sed -i '69s/.*/OPENCL_INC="/usr/include/CL"/' configure.ac
-sed -i '70s/.*/OPENCL_LIBS="/usr/local/cuda-6.5/lib64/libOpenCL.so"/' configure.ac
-./autogen.sh
-./configure --enable-opencl
-make -j
-sudo make install
-sudo make install LANGS="eng deu osd"
+# Add spreads init script to default boot sequence
+update-rc.d spread defaults
