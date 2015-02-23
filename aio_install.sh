@@ -16,7 +16,7 @@ zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
 libboost1.55-all-dev libxrender-dev -y
 
 ##Install jbig2enc
-command -v foo >/dev/null 2>&1 || {
+command -v jbig2 >/dev/null 2>&1 || {
 git clone https://github.com/agl/jbig2enc
 cd jbig2enc
 ./autogen.sh
@@ -26,12 +26,13 @@ sudo make install
 cd ..
 }
 ##next install pdfbeads
+command -v pdfbeads >/dev/null 2>&1 || {
 git clone https://github.com/ifad/pdfbeads
 cd pdfbeads
 gem build pdfbeads.gemspec 
 sudo gem install pdfbeads-1.0.11.gem
 cd ..
-
+}
 ##next install latest djvubind
 git clone https://github.com/strider1551/djvubind
 cd djvubind
