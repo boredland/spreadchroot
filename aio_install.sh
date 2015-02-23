@@ -13,7 +13,7 @@ libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git-core \
 bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev \
 rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
 zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
-libboost1.55-all-dev libxrender-dev -y
+libboost1.55-all-dev libxrender-dev liblua5.2-dev -y
 
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
@@ -96,6 +96,8 @@ pip install pycparser
 pip install cffi 
 pip install jpegtran-cffi
 pip install --upgrade --pre pyusb
+pip install --install-option='--no-luajit' lupa
+pip install chdkptp.py
 
 
 ##enable spreads GUI packages by installing PySide and fixing symbolic link problem
@@ -130,7 +132,7 @@ cd spreads-*
 pip install .
 pip install -e ".[web]"
 cd ..
-
+l
 ##Kill gphoto.
 pkill -9 gphoto2
 
