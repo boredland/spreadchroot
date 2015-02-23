@@ -40,6 +40,15 @@ cd djvubind
 sudo ./setup.py install
 cd ..
 }
+
+## Install Scantailor
+wget -O scantailor-enhanced-20140214.tar.bz2 http://downloads.sourceforge.net/project/scantailor/scantailor-devel/enhanced/scantailor-enhanced-20140214.tar.bz2
+tar xvjf scantailor-enhanced-20140214.tar.bz2
+cd scantailor-enhanced
+cmake .
+make
+sudo make install
+
 ## Next install latest chdkptp.
 #wget -O chdkptp-r658-raspbian-gui.zip https://www.assembla.com/spaces/chdkptp/documents/c5q2j8xwmr5jiWacwqjQXA/download/c5q2j8xwmr5jiWacwqjQXA
 command -v chdkptp >/dev/null 2>&1 || {
