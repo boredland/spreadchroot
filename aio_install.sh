@@ -52,20 +52,20 @@ sudo make install }
 
 ## Next install latest chdkptp.
 #wget -O chdkptp-r658-raspbian-gui.zip https://www.assembla.com/spaces/chdkptp/documents/c5q2j8xwmr5jiWacwqjQXA/download/c5q2j8xwmr5jiWacwqjQXA
-command -v chdkptp >/dev/null 2>&1 || {
-  if [[ "$(uname -m)" = "x86_64" ]]
-  then
-  wget -O chdkptp-r658-Linux-x86_64.zip https://www.assembla.com/spaces/chdkptp/documents/bEQP3wxwir5ikeacwqEsg8/download/bEQP3wxwir5ikeacwqEsg8
-  sudo unzip chdkptp-r658-Linux-x86_64.zip -d /usr/local/lib/chdkptp
-  fi
-}
+#command -v chdkptp >/dev/null 2>&1 || {
+#  if [[ "$(uname -m)" = "x86_64" ]]
+#  then
+# wget -O chdkptp-r658-Linux-x86_64.zip https://www.assembla.com/spaces/chdkptp/documents/bEQP3wxwir5ikeacwqEsg8/download/bEQP3wxwir5ikeacwqEsg8
+#sudo unzip chdkptp-r658-Linux-x86_64.zip -d /usr/local/lib/chdkptp
+#fi
+#}
 
 ##install latest canvas draw, mine was 5.8
-if [[ "$(uname -m)" = "x86_64" ]]
-then
-  wget http://downloads.sourceforge.net/project/canvasdraw/5.8/Linux%20Libraries/cd-5.8_Linux35_64_lib.tar.gz
-  sudo tar zxf cd-5.8_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
-fi
+#if [[ "$(uname -m)" = "x86_64" ]]
+#then
+#  wget http://downloads.sourceforge.net/project/canvasdraw/5.8/Linux%20Libraries/cd-5.8_Linux35_64_lib.tar.gz
+#  sudo tar zxf cd-5.8_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
+#fi
 
 ##next install IUP - portable user interface in the latest version, mine was 3.11
 if [[ "$(uname -m)" = "x86_64" ]]
@@ -104,7 +104,6 @@ pip install cffi
 pip install jpegtran-cffi
 pip install --upgrade --pre pyusb
 pip install --install-option='--no-luajit' lupa
-pip install chdkptp.py
 
 
 ##enable spreads GUI packages by installing PySide and fixing symbolic link problem
@@ -138,8 +137,9 @@ tar xvf spreads-latest.tar.gz
 cd spreads-*
 pip install .
 pip install -e ".[web]"
+pip install chdkptp.py
 cd ..
-l
+
 ##Kill gphoto.
 pkill -9 gphoto2
 
