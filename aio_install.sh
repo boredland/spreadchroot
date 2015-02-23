@@ -6,20 +6,38 @@ sudo apt-get upgrade
 sudo apt-get install python2.7 python2.7-dev python-virtualenv \
 python-tk idle python-pmw python-imaging \
 python-pip libpython2.7-dev libusb-dev \
-libjpeg-dev libtiff5-dev libqt4-core ruby ruby-dev ruby-rmagick \
+libjpeg-dev libtiff5-dev libqt4-core ruby-rmagick \
 libmagickwand-dev nano \
-ruby-hpricot scantailor lua5.2 git imagemagick tesseract-ocr* -y
+ruby-hpricot lua5.2 git imagemagick tesseract-ocr* build-essenital \
+libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git-core \
+bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev \
+rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
+zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
+libboost1.55-all-dev libxrender-dev -y
 
+##Install jbig2enc
+git clone https://github.com/agl/jbig2enc
+cd jbig2enc
+./autogen.sh
+./configure
+make
+sudo make install
+cd ..
 ##next install pdfbeads
-sudo gem install pdfbeads
+git clone https://github.com/ifad/pdfbeads
+cd pdfbeads
+gem build pdfbeads.gemspec 
+sudo gem install pdfbeads-1.0.11.gem
+cd ..
 
-##next install latest djvubind (for me was 1.2.1)
+##next install latest djvubind
 git clone https://github.com/strider1551/djvubind
 cd djvubind
 sudo ./setup.py install
 cd ..
+
 ## Next install latest chdkptp.
-wget -O chdkptp-r658-raspbian-gui.zip https://www.assembla.com/spaces/chdkptp/documents/c5q2j8xwmr5jiWacwqjQXA/download/c5q2j8xwmr5jiWacwqjQXA
+#wget -O chdkptp-r658-raspbian-gui.zip https://www.assembla.com/spaces/chdkptp/documents/c5q2j8xwmr5jiWacwqjQXA/download/c5q2j8xwmr5jiWacwqjQXA
 wget -O chdkptp-r658-Linux-x86_64.zip https://www.assembla.com/spaces/chdkptp/documents/bEQP3wxwir5ikeacwqEsg8/download/bEQP3wxwir5ikeacwqEsg8
 sudo unzip chdkptp-r658-Linux-x86_64.zip -d /usr/local/lib/chdkptp
 
@@ -34,10 +52,7 @@ sudo tar zxf iup-3.11_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
 ##add the /usr/local/lib/chdkptp path to the systems dynamic library search path
 
 ##create and open a new file
-sudo nano /etc/ld.so.conf.d/spreads.conf
-
-##add the line
-/usr/local/lib/chdkptp/
+sudo nano echo "/usr/local/lib/chdkptp/" >> /etc/ld.so.conf.d/spreads.conf
 
 ##reload the system-wide libraries paths
 sudo ldconfig
@@ -58,7 +73,7 @@ source ~/.spreads/bin/activate
 sudo apt-get install python-psutil libffi-dev python-usb libturbojpeg -y
 
 ##fix problems with the libturbojpeg dyn lib
-##sudo ln -s /usr/lib/x86_64-linux-gnu/libturbojpeg.so.0.0.0 /usr/lib/x86_64-linux-gnu/libturbojpeg.so
+sudo ln -s /usr/lib/x86_64-linux-gnu/libturbojpeg.so.0.0.0 /usr/lib/x86_64-linux-gnu/libturbojpeg.so
 
 pip install pycparser 
 pip install cffi 
@@ -71,16 +86,15 @@ sudo apt-get install python-pyside -y
 sudo ln -s /usr/lib/python2.7/dist-packages/PySide ~/.spreads/lib/python2.7/site-packages/PySide
 
 ##add current user to staff group  (the word ´username´ must be replaced by the current username)
-
 sudo adduser $(whoami) staff
 
 ##ow add the lua env variable to the global path in order that the chdkptp command will work
 #!#add check!
-echo export CHDKPTP_DIR=/usr/local/lib/chdkptp >> ~/.bashrc 
-echo export LUA_PATH="$CHDKPTP_DIR/lua/?.lua" >> ~/.bashrc 
-echo source ~/.spreads/bin/activate >> ~/.bashrc 
+echo "export CHDKPTP_DIR=/usr/local/lib/chdkptp" >> ~/.bashrc 
+echo "export LUA_PATH="$CHDKPTP_DIR/lua/?.lua"" >> ~/.bashrc 
+echo "source ~/.spreads/bin/activate" >> ~/.bashrc 
 
-##open a new shell or type 
+## type 
 source ~/.bashrc
 
 ##we need some more python modules for the spread web plugin
@@ -100,43 +114,13 @@ pip install .
 pip install -e ".[web]"
 cd ..
 
+##Kill gphoto.
+ps aux | grep gphoto
+kill -9 <PID of gphoto2 process>
 
 ##now run the spreads configuration program
 
 spread configure
-```
-in the program set
 
-* step 1 select : chdkcamera
-* step 2 select : scantailor, tesseract, gui, autorotate, web
-* step 3 select : select order - autorotate,scantailor,tesseract 
-* step 4 and 5 select : no for both camera questions (target_page and focus)
-
-this will save the config as config.yaml.
-
-now its time to configure the cameras
-
-Before rerunning the spreads config program again first make sure if you can use the 
-chdkptp program.
-
-First before using chdkptp in Ubuntu 14.04 you have to kill gphoto in order to gain access to the chdk-enabled cameras otherwise you will not be able to use them (gphoto2 will block access to the cameras for all other processes)
-```bash
-ps aux | grep gphoto
-kill -9 <PID of gphoto2 process>
-```
-
-I use the Canon A2200, enable CHDK in your camera 
-(click [here](http://chdk.wikia.com/wiki/CHDK_1.2.0_User_Manual) - section Using CHKD), plug in the micro USB after 
-enabling (I use firmware update method) than plug in the other USB end into your computer, than run the
-chdkptp program to test if it is installed correctly.
-
-```bash
-/usr/local/lib/chdkptp/chdkptp
-```
-now click on Connect button.
-
-If it is running without problems end the program.
-
-Now restart the spread configure program again, enable CHDK in your camera, than connect to the computer
- (if not done already) and configure target_page and focus. Should give no errors if camera and CHDK has been 
-setup correctly.
+## check if chdkptp is working
+#/usr/local/lib/chdkptp/chdkptp
