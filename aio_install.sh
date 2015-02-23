@@ -16,6 +16,7 @@ zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
 libboost1.55-all-dev libxrender-dev -y
 
 ##Install jbig2enc
+command -v foo >/dev/null 2>&1 || {
 git clone https://github.com/agl/jbig2enc
 cd jbig2enc
 ./autogen.sh
@@ -23,6 +24,7 @@ cd jbig2enc
 make
 sudo make install
 cd ..
+}
 ##next install pdfbeads
 git clone https://github.com/ifad/pdfbeads
 cd pdfbeads
