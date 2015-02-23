@@ -53,19 +53,24 @@ sudo make install }
 ## Next install latest chdkptp.
 #wget -O chdkptp-r658-raspbian-gui.zip https://www.assembla.com/spaces/chdkptp/documents/c5q2j8xwmr5jiWacwqjQXA/download/c5q2j8xwmr5jiWacwqjQXA
 command -v chdkptp >/dev/null 2>&1 || {
-wget -O chdkptp-r658-Linux-x86_64.zip https://www.assembla.com/spaces/chdkptp/documents/bEQP3wxwir5ikeacwqEsg8/download/bEQP3wxwir5ikeacwqEsg8
-sudo unzip chdkptp-r658-Linux-x86_64.zip -d /usr/local/lib/chdkptp
+  if [[ "$(uname -m)" = "x86_64" ]]
+  then
+  wget -O chdkptp-r658-Linux-x86_64.zip https://www.assembla.com/spaces/chdkptp/documents/bEQP3wxwir5ikeacwqEsg8/download/bEQP3wxwir5ikeacwqEsg8
+  sudo unzip chdkptp-r658-Linux-x86_64.zip -d /usr/local/lib/chdkptp
+  fi
 }
 ##install latest canvas draw, mine was 5.8
-wget http://downloads.sourceforge.net/project/canvasdraw/5.8/Linux%20Libraries/cd-5.8_Linux35_64_lib.tar.gz
-sudo tar zxf cd-5.8_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
-
+if [[ "$(uname -m)" = "x86_64" ]]
+then
+  wget http://downloads.sourceforge.net/project/canvasdraw/5.8/Linux%20Libraries/cd-5.8_Linux35_64_lib.tar.gz
+  sudo tar zxf cd-5.8_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
+fi
 ##next install IUP - portable user interface in the latest version, mine was 3.11
+if [[ "$(uname -m)" = "x86_64" ]]
+then
 wget http://downloads.sourceforge.net/project/iup/3.11/Linux%20Libraries/iup-3.11_Linux35_64_lib.tar.gz
 sudo tar zxf iup-3.11_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
-
-##add the /usr/local/lib/chdkptp path to the systems dynamic library search path
-
+fi
 ##create and open a new file
 if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"; then
 sudo sh -c "echo '/usr/local/lib/chdkptp/' >> /etc/ld.so.conf.d/spreads.conf"
