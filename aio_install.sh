@@ -34,16 +34,18 @@ sudo gem install pdfbeads-1.0.11.gem
 cd ..
 }
 ##next install latest djvubind
+command -v djvubind >/dev/null 2>&1 || {
 git clone https://github.com/strider1551/djvubind
 cd djvubind
 sudo ./setup.py install
 cd ..
-
+}
 ## Next install latest chdkptp.
 #wget -O chdkptp-r658-raspbian-gui.zip https://www.assembla.com/spaces/chdkptp/documents/c5q2j8xwmr5jiWacwqjQXA/download/c5q2j8xwmr5jiWacwqjQXA
+command -v chdkptp >/dev/null 2>&1 || {
 wget -O chdkptp-r658-Linux-x86_64.zip https://www.assembla.com/spaces/chdkptp/documents/bEQP3wxwir5ikeacwqEsg8/download/bEQP3wxwir5ikeacwqEsg8
 sudo unzip chdkptp-r658-Linux-x86_64.zip -d /usr/local/lib/chdkptp
-
+}
 ##install latest canvas draw, mine was 5.8
 wget http://downloads.sourceforge.net/project/canvasdraw/5.8/Linux%20Libraries/cd-5.8_Linux35_64_lib.tar.gz
 sudo tar zxf cd-5.8_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
