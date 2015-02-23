@@ -57,7 +57,9 @@ sudo tar zxf iup-3.11_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
 ##add the /usr/local/lib/chdkptp path to the systems dynamic library search path
 
 ##create and open a new file
-sudo nano echo "/usr/local/lib/chdkptp/" >> /etc/ld.so.conf.d/spreads.conf
+if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"; then
+sudo sh -c "echo '/usr/local/lib/chdkptp/' >> /etc/ld.so.conf.d/spreads.conf"
+fi
 
 ##reload the system-wide libraries paths
 sudo ldconfig
@@ -120,8 +122,7 @@ pip install -e ".[web]"
 cd ..
 
 ##Kill gphoto.
-ps aux | grep gphoto
-kill -9 <PID of gphoto2 process>
+pkill -9 gphoto2
 
 ##now run the spreads configuration program
 
