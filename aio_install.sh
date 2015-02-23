@@ -42,12 +42,13 @@ cd ..
 }
 
 ## Install Scantailor
+command -v scantailor-cli >/dev/null 2>&1 || {
 wget -O scantailor-enhanced-20140214.tar.bz2 http://downloads.sourceforge.net/project/scantailor/scantailor-devel/enhanced/scantailor-enhanced-20140214.tar.bz2
 tar xvjf scantailor-enhanced-20140214.tar.bz2
 cd scantailor-enhanced
 cmake .
 make
-sudo make install
+sudo make install }
 
 ## Next install latest chdkptp.
 #wget -O chdkptp-r658-raspbian-gui.zip https://www.assembla.com/spaces/chdkptp/documents/c5q2j8xwmr5jiWacwqjQXA/download/c5q2j8xwmr5jiWacwqjQXA
