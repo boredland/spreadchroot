@@ -59,12 +59,14 @@ command -v chdkptp >/dev/null 2>&1 || {
   sudo unzip chdkptp-r658-Linux-x86_64.zip -d /usr/local/lib/chdkptp
   fi
 }
+
 ##install latest canvas draw, mine was 5.8
 if [[ "$(uname -m)" = "x86_64" ]]
 then
   wget http://downloads.sourceforge.net/project/canvasdraw/5.8/Linux%20Libraries/cd-5.8_Linux35_64_lib.tar.gz
   sudo tar zxf cd-5.8_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
 fi
+
 ##next install IUP - portable user interface in the latest version, mine was 3.11
 if [[ "$(uname -m)" = "x86_64" ]]
 then
