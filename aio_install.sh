@@ -8,7 +8,7 @@ python-tk idle python-pmw python-imaging \
 python-pip libpython2.7-dev libusb-dev \
 libjpeg-dev libtiff5-dev libqt4-core ruby-rmagick \
 libmagickwand-dev nano \
-ruby-hpricot lua5.2 git imagemagick tesseract-ocr* build-essenital \
+ruby-hpricot lua5.2 git imagemagick tesseract-ocr* build-essential \
 libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git-core \
 bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev \
 rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
