@@ -149,3 +149,4 @@ spread configure
 
 ## check if chdkptp is working
 #/usr/local/lib/chdkptp/chdkptp
+exit 0
