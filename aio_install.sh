@@ -68,11 +68,11 @@ sudo make install }
 #fi
 
 ##next install IUP - portable user interface in the latest version, mine was 3.11
-if [[ "$(uname -m)" = "x86_64" ]]
-then
-wget http://downloads.sourceforge.net/project/iup/3.11/Linux%20Libraries/iup-3.11_Linux35_64_lib.tar.gz
-sudo tar zxf iup-3.11_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
-fi
+#if [[ "$(uname -m)" = "x86_64" ]]
+#then
+#wget http://downloads.sourceforge.net/project/iup/3.11/Linux%20Libraries/iup-3.11_Linux35_64_lib.tar.gz
+#sudo tar zxf iup-3.11_Linux35_64_lib.tar.gz -C /usr/local/lib/chdkptp
+#fi
 ##create and open a new file
 if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"; then
 sudo sh -c "echo '/usr/local/lib/chdkptp/' >> /etc/ld.so.conf.d/spreads.conf"
