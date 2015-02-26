@@ -14,7 +14,7 @@ bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev \
 rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
 zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
 libboost1.55-all-dev libxrender-dev liblua5.2-dev \
-autotools automake libtool leptonica-prog-y
+automake libtool -y
 
 ##install latest leptonica
 command -v jbig2 >/dev/null 2>&1 || {
