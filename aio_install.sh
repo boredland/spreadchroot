@@ -17,7 +17,7 @@ libboost1.55-all-dev libxrender-dev liblua5.2-dev \
 automake libtool -y
 
 ##install latest leptonica
-command -v jbig2 >/dev/null 2>&1 || {
+command -v leptonica >/dev/null 2>&1 || {
 wget http://www.leptonica.com/source/leptonica-1.71.tar.gz
 tar xvf leptonica-1.71.tar.gz
 cd leptonica-1.71/
