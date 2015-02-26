@@ -13,7 +13,7 @@ libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git \
 bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev \
 rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
 zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
-libboost1.55-all-dev libxrender-dev liblua5.2-dev autotools -y
+libboost1.55-all-dev libxrender-dev liblua5.2-dev autotools automake -y
 
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
