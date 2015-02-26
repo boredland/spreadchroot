@@ -14,18 +14,29 @@ bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev \
 rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
 zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
 libboost1.55-all-dev libxrender-dev liblua5.2-dev \
-autotools automake libtool -y
+autotools automake libtool leptonica-prog-y
 
+##install latest leptonica
+command -v jbig2 >/dev/null 2>&1 || {
+wget http://www.leptonica.com/source/leptonica-1.71.tar.gz
+tar xvf leptonica-1.71.tar.gz
+cd leptonica-1.71/
+./autobuild
+./configure
+make -j
+sudo make install
+}
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
 git clone https://github.com/agl/jbig2enc
 cd jbig2enc
 ./autogen.sh
 ./configure
-make
+make -j
 sudo make install
 cd ..
 }
+
 ##next install pdfbeads
 command -v pdfbeads >/dev/null 2>&1 || {
 git clone https://github.com/ifad/pdfbeads
