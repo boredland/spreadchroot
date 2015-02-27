@@ -52,6 +52,7 @@ cd tesseract-ocr
 git pull
 ./configure
 make -j
+sudo make install
 sudo make install-langs="deu deu-frak eng"
 }
 ##Install jbig2enc
