@@ -47,7 +47,8 @@ then
 mkdir tmp
 cd tmp
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
-cp tmp/tessdata/* ../tessdata
+cp tessdata/* ../tessdata
+rm tessdata
 else 
 cd ..
 fi
