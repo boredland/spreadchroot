@@ -1,5 +1,9 @@
+#!/usr/bin/env bash
 set -e
 set +x
+# Redirect stdout ( > ) into a named pipe ( >() ) running "tee"
+exec > >../log_spreads_deploy_(tee $(date +%F)_$(date +"%I-%M-%S").txt)
+exec 2>&1
 ##starting from a clean 14.04 system
 sudo apt-get update
 sudo apt-get upgrade	
