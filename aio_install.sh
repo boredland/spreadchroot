@@ -8,7 +8,7 @@ python-tk idle python-pmw python-imaging \
 python-pip libpython2.7-dev libusb-dev \
 libjpeg-dev libtiff5-dev libqt4-core ruby-rmagick \
 libmagickwand-dev nano \
-ruby-hpricot lua5.2 git imagemagick tesseract-ocr* build-essential \
+ruby-hpricot lua5.2 git imagemagick build-essential \
 libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git \
 bash-completion nfs-common ghostscript ruby1.9.1 ruby1.9.1-dev \
 rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
@@ -16,6 +16,9 @@ zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
 libboost1.55-all-dev libxrender-dev liblua5.2-dev \
 automake libtool -y
 
+command -v tesseract >/dev/null 2>&1 || {
+  sudo apt-get install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
+  }
 ##install latest leptonica
 command -v leptonica >/dev/null 2>&1 || {
 wget http://www.leptonica.com/source/leptonica-1.71.tar.gz
