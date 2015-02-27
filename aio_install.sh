@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#set -e
+set -e
 set -x
 # Redirect stdout ( > ) into a named pipe ( >() ) running "tee"
 exec > >(tee $(date +%F)_$(date +"%I-%M-%S")_spreads_deploy_log.txt)
@@ -107,7 +107,7 @@ fi
 sudo ldconfig
 
 ##now install libyaml
-if [[ ! -f /usr/local/lib/libyaml-* ]]
+if [[ ! -f /usr/local/lib/libyaml-0.so.2.0.3 ]]
 then
 wget http://pyyaml.org/download/libyaml/yaml-0.1.5.tar.gz
 tar xvf yaml-0.1.5.tar.gz
@@ -121,9 +121,6 @@ fi
 ##finally install spreads in an virtualenv, create a new one
 virtualenv ~/.spreads
 source ~/.spreads/bin/activate
-
-##fix problems with the libturbojpeg dyn lib
-sudo ln -s /usr/lib/x86_64-linux-gnu/libturbojpeg.so.0.0.0 /usr/lib/x86_64-linux-gnu/libturbojpeg.so
 
 pip install pycparser 
 pip install cffi 
