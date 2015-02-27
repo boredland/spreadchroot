@@ -38,22 +38,15 @@ if [[ ! -d tesseract-ocr ]]
 then
 git clone https://code.google.com/p/tesseract-ocr/
 fi
-if [[ ! tesseract-ocr-3.02.eng.tar.gz ]]
-then
-    wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
-    tar xfv tesseract-ocr-3.02.eng.tar.gz
-fi
-if [[ ! tesseract-ocr-3.02.eng.tar.gz ]]
-then
-    wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.deu.tar.gz
-    tar xfv tesseract-ocr-3.02.deu.tar.gz
-fi
 cd tesseract-ocr
+if [[ ! -f tessdata/deu.traineddata ]]
+then
+git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
+fi
 git pull
 ./configure
 make -j
-sudo make install
-sudo make install-langs="deu deu-frak eng"
+sudo make install LANGS=
 }
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
