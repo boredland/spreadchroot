@@ -140,6 +140,8 @@ echo "export LUA_PATH="$CHDKPTP_DIR/lua/?.lua"" >> ~/.bashrc
 echo "source ~/.spreads/bin/activate" >> ~/.bashrc 
 ## type 
 source ~/.bashrc
+## fix errors with turbojpeg - need paths for armhf
+sudo ln -s /usr/lib/x86_64-linux-gnu/libturbojpeg.so.0.0.0 /usr/lib/x86_64-linux-gnu/libturbojpeg.so
 ##we need some more python modules for the spread web plugin
 pip install Flask
 pip install tornado
