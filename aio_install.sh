@@ -169,6 +169,6 @@ pkill -9 gphoto2
 
 echo Now run spread configure
 echo I suggest you activate: autorotate, djvubind, hidtrigger, pdfbeads, scantailor, tesseract, web
-echo Lateron start spreads via \"spread web\" and open any browser with "[YOURIP]:5000"
+echo Lateron, after a reboot, start spreads via \"spread web\" and open any browser with "[YOURIP]:5000"
 echo If you dont want to disable gphoto2 permanently I suggest you type in "pkill -9 gphoto2" before you power on your cameras.
 exit 0
