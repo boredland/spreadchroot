@@ -156,6 +156,7 @@ tar xvf spreads-latest.tar.gz
 cd spreads-*
 pip install .
 pip install -e ".[web]"
+pip install -e ".[hidtrigger]"
 pip install chdkptp.py
 cd ..
 ##Kill gphoto.
