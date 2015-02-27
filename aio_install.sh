@@ -44,12 +44,10 @@ cd tesseract-ocr/tessdata
 
 if [[ ! -f deu.traineddata ]]
 then
-mkdir tmp
-cd tmp
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
-cp tessdata/* ../tessdata
+cp tessdata/* .
+rm -r tessdata
 cd ..
-rm -r tmp
 else 
 cd ..
 fi
