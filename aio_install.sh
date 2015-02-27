@@ -34,14 +34,11 @@ sudo make install
 }
 ## install tesseract from git
 command -v tesseract >/dev/null 2>&1 || {
-
 if [[ ! -d tesseract-ocr ]]
 then
 git clone https://code.google.com/p/tesseract-ocr/
 fi
-
 cd tesseract-ocr/tessdata
-
 if [[ ! -f deu.traineddata ]]
 then
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
@@ -51,13 +48,11 @@ cd ..
 else 
 cd ..
 fi
-
 git pull
 ./autogen.sh
 ./configure
 make -j
 sudo make install LANGS=
-
 }
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
