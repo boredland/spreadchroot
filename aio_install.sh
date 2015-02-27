@@ -53,7 +53,10 @@ git pull
 ./autogen.sh
 ./configure
 make -j
-sudo make install LANGS=
+sudo make install
+make -j training
+sudo make training-install
+cd ..
 }
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
@@ -63,8 +66,6 @@ cd jbig2enc
 ./configure
 make -j
 sudo make install
-make -j training
-sudo make training-install
 cd ..
 }
 
