@@ -16,11 +16,12 @@ libjpeg-dev libtiff5-dev libqt4-core ruby-rmagick \
 libmagickwand-dev lua5.2 liblua5.2-dev \
 ruby-hpricot git imagemagick build-essential \
 libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git \
-ghostscript ruby1.9.1 ruby1.9.1-dev \
-rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
+ghostscript ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 \
+irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
 zlib1g-dev cmake zlib1g-dev libpng12-dev libtiff5-dev \
-libboost1.55-all-dev libxrender-dev \
-automake libtool libpango1.0-dev -y
+libboost1.55-all-dev libxrender-dev libturbojpeg \
+automake libtool libpango1.0-dev python-psutil libffi-dev -y
+##python-usb has some depency-error
 
 ##install latest leptonica
 command -v convertfilestopdf >/dev/null 2>&1 || {
@@ -106,19 +107,20 @@ fi
 sudo ldconfig
 
 ##now install libyaml
+if [[ ! -f /usr/local/lib/libyaml-* ]]
+then
 wget http://pyyaml.org/download/libyaml/yaml-0.1.5.tar.gz
 tar xvf yaml-0.1.5.tar.gz
 cd yaml-0.1.5
 ./configure
 make -j
 sudo make install
+cd ..
+fi
 
 ##finally install spreads in an virtualenv, create a new one
 virtualenv ~/.spreads
 source ~/.spreads/bin/activate
-
-##install further dependancies for spreads (ignore warnings)
-sudo apt-get install python-psutil libffi-dev python-usb libturbojpeg -y
 
 ##fix problems with the libturbojpeg dyn lib
 sudo ln -s /usr/lib/x86_64-linux-gnu/libturbojpeg.so.0.0.0 /usr/lib/x86_64-linux-gnu/libturbojpeg.so
