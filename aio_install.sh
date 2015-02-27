@@ -40,7 +40,7 @@ cd tesseract-ocr
 ./autogen.sh
 ./configure
 make -j
-sudo make install-langs
+install-langs="deu deu-frak eng"
 }
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
