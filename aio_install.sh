@@ -47,9 +47,10 @@ then
 cd ..
 rm -r tessdata
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
+else 
+cd ..
 fi
 
-cd $SCRIPTPATH/tesseract-ocr
 git pull
 ./autogen.sh
 ./configure
