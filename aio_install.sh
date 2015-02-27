@@ -56,6 +56,7 @@ make -j
 sudo make install
 make -j training
 sudo make training-install
+sudo make install LANGS=
 cd ..
 }
 ##Install jbig2enc
