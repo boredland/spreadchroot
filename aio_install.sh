@@ -63,6 +63,8 @@ cd jbig2enc
 ./configure
 make -j
 sudo make install
+make -j training
+sudo make training-install
 cd ..
 }
 
