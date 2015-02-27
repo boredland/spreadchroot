@@ -22,8 +22,6 @@ zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
 libboost1.55-all-dev libxrender-dev liblua5.2-dev \
 automake libtool -y
 
-
-
 ##install latest leptonica
 command -v convertfilestopdf >/dev/null 2>&1 || {
 wget http://www.leptonica.com/source/leptonica-1.71.tar.gz
