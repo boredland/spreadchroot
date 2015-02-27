@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-#set -x
+set -x
 # Redirect stdout ( > ) into a named pipe ( >() ) running "tee"
 exec > >(tee $(date +%F)_$(date +"%I-%M-%S")_spreads_deploy_log.txt)
 exec 2>&1
@@ -45,6 +45,7 @@ rm -r tessdata
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
 fi
 git pull
+cd ..
 ./configure
 make -j
 sudo make install LANGS=
