@@ -41,6 +41,7 @@ fi
 cd tesseract-ocr
 if [[ ! -f tessdata/deu.traineddata ]]
 then
+rm -r tessdata
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
 fi
 git pull
