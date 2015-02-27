@@ -37,15 +37,18 @@ sudo make install
 
 command -v tesseract >/dev/null 2>&1 || {
 git clone https://code.google.com/p/tesseract-ocr/
-wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
-wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.deu.tar.gz
-tar xfv tesseract-ocr-3.02.eng.tar.gz
-tar xfv tesseract-ocr-3.02.deu.tar.gz
+if [[ ! tesseract-ocr-3.02.eng.tar.gz ]] (
+    wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
+    tar xfv tesseract-ocr-3.02.eng.tar.gz
+)
+if [[ ! tesseract-ocr-3.02.eng.tar.gz ]] (
+    wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.deu.tar.gz
+    tar xfv tesseract-ocr-3.02.deu.tar.gz
+)
 cd tesseract-ocr
-./autogen.sh
 ./configure
 make -j
-install-langs="deu deu-frak eng"
+sudo make install-langs="deu deu-frak eng"
 }
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
