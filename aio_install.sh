@@ -46,7 +46,7 @@ if [[ ! -f deu.traineddata ]]
 then
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
 cp tessdata/* .
-rm -r tessdata
+sudo rm -r tessdata
 cd ..
 else 
 cd ..
