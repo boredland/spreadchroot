@@ -1,3 +1,4 @@
+set -e
 ##starting from a clean 14.04 system
 sudo apt-get update
 sudo apt-get upgrade	
@@ -16,11 +17,10 @@ zlib1g-dev subversion cmake zlib1g-dev libpng12-dev libtiff5-dev \
 libboost1.55-all-dev libxrender-dev liblua5.2-dev \
 automake libtool -y
 
-command -v tesseract >/dev/null 2>&1 || {
-  sudo apt-get install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
-  }
+
+
 ##install latest leptonica
-command -v leptonica >/dev/null 2>&1 || {
+command -v convertfilestopdf >/dev/null 2>&1 || {
 wget http://www.leptonica.com/source/leptonica-1.71.tar.gz
 tar xvf leptonica-1.71.tar.gz
 cd leptonica-1.71/
@@ -28,6 +28,19 @@ cd leptonica-1.71/
 ./configure
 make -j
 sudo make install
+}
+
+command -v tesseract >/dev/null 2>&1 || {
+git clone https://code.google.com/p/tesseract-ocr/
+wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
+wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.deu.tar.gz
+tar xfv tesseract-ocr-3.02.eng.tar.gz
+tar xfv tesseract-ocr-3.02.deu.tar.gz
+cd tesseract-ocr
+./autogen.sh
+./configure
+make -j
+sudo make install-langs
 }
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
@@ -97,23 +110,19 @@ pip install jpegtran-cffi
 pip install --upgrade --pre pyusb
 pip install --install-option='--no-luajit' lupa
 
-
 ##enable spreads GUI packages by installing PySide and fixing symbolic link problem
 sudo apt-get install python-pyside -y
 sudo ln -s /usr/lib/python2.7/dist-packages/PySide ~/.spreads/lib/python2.7/site-packages/PySide
 
 ##add current user to staff group  (the word ´username´ must be replaced by the current username)
 sudo adduser $(whoami) staff
-
 ##ow add the lua env variable to the global path in order that the chdkptp command will work
 #!#add check!
 echo "export CHDKPTP_DIR=/usr/local/lib/chdkptp" >> ~/.bashrc 
 echo "export LUA_PATH="$CHDKPTP_DIR/lua/?.lua"" >> ~/.bashrc 
 echo "source ~/.spreads/bin/activate" >> ~/.bashrc 
-
 ## type 
 source ~/.bashrc
-
 ##we need some more python modules for the spread web plugin
 pip install Flask
 pip install tornado
@@ -122,7 +131,6 @@ pip install waitress
 pip install zipstream
 pip install Wand
 pip install Flask-Compress
-
 ##now install spreads
 wget http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz
 tar xvf spreads-latest.tar.gz
@@ -131,14 +139,8 @@ pip install .
 pip install -e ".[web]"
 pip install chdkptp.py
 cd ..
-
 ##Kill gphoto.
 pkill -9 gphoto2
-
 ##now run the spreads configuration program
-
 spread configure
-
-## check if chdkptp is working
-#/usr/local/lib/chdkptp/chdkptp
 exit 0
