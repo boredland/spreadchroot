@@ -37,14 +37,16 @@ sudo make install
 
 command -v tesseract >/dev/null 2>&1 || {
 git clone https://code.google.com/p/tesseract-ocr/
-if [[ ! tesseract-ocr-3.02.eng.tar.gz ]] (
+if [[ ! tesseract-ocr-3.02.eng.tar.gz ]]
+then
     wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
     tar xfv tesseract-ocr-3.02.eng.tar.gz
-)
-if [[ ! tesseract-ocr-3.02.eng.tar.gz ]] (
+fi
+if [[ ! tesseract-ocr-3.02.eng.tar.gz ]]
+then
     wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.deu.tar.gz
     tar xfv tesseract-ocr-3.02.deu.tar.gz
-)
+fi
 cd tesseract-ocr
 ./configure
 make -j
