@@ -1,4 +1,6 @@
 ## Aimed to create a all-in-one install-script for spreads for Ubuntu and Debian based OSes.
+## Where it works
+Much of the program will be compiled on the client-side, so it should be cross-platform (yet it was only tested in linaro 14.04 and Mint 17).
 ## How it works:
 #Just install git on the platform of your choice:
 ```ubuntu terminal```
