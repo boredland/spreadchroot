@@ -158,6 +158,5 @@ pip install chdkptp.py
 cd ..
 ##Kill gphoto.
 pkill -9 gphoto2
-##now run the spreads configuration program
-spread configure
+
 exit 0
