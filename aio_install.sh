@@ -7,7 +7,7 @@ exec 2>&1
 ##starting from a clean 14.04 system
 sudo apt-get update
 sudo apt-get upgrade	
-
+SCRIPTPATH="$( cd "$( echo "${BASH_SOURCE[0]%/*}" )" && pwd )"
 ##now install all dependcies
 sudo apt-get install python2.7 python2.7-dev python-virtualenv \
 python-tk idle python-pmw python-imaging \
@@ -32,23 +32,30 @@ cd leptonica-1.71/
 make -j
 sudo make install
 }
-
+## install tesseract from git
 command -v tesseract >/dev/null 2>&1 || {
+
 if [[ ! -d tesseract-ocr ]]
 then
 git clone https://code.google.com/p/tesseract-ocr/
 fi
-cd tesseract-ocr
-if [[ ! -f tessdata/deu.traineddata ]]
+
+cd tesseract-ocr/tessdata
+
+if [[ ! -f deu.traineddata ]]
 then
+cd ..
 rm -r tessdata
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
 fi
+
+cd $SCRIPTPATH/tesseract-ocr
 git pull
-cd ..
+./autogen.sh
 ./configure
 make -j
 sudo make install LANGS=
+
 }
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
