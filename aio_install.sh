@@ -103,6 +103,11 @@ then
 sudo sh -c "echo '/usr/local/lib/chdkptp/' >> /etc/ld.so.conf.d/spreads.conf"
 fi
 
+## Add udev rule for hidtrigger
+if grep -q 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' "/etc/udev/rules.d/99-usb.rules"
+then
+sudo sh -c "echo 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' > /etc/udev/rules.d/99-usb.rules"
+fi
 ##reload the system-wide libraries paths
 sudo ldconfig
 
@@ -161,6 +166,7 @@ pip install chdkptp.py
 cd ..
 ##Kill gphoto.
 pkill -9 gphoto2
+
 echo Now run spread configure
 echo I suggest you activate: autorotate, djvubind, hidtrigger, pdfbeads, scantailor, tesseract, web
 echo Lateron start spreads via \"spread web\" and open any browser with "[YOURIP]:5000"
