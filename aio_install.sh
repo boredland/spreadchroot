@@ -92,7 +92,8 @@ tar xvjf scantailor-enhanced-20140214.tar.bz2
 cd scantailor-enhanced
 cmake .
 make -j
-sudo make install }
+sudo make install
+}
 
 ##create and open a new file
 if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"; then
