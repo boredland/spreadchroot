@@ -19,7 +19,7 @@ libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git \
 ghostscript ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 \
 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
 zlib1g-dev cmake zlib1g-dev libpng12-dev libtiff5-dev \
-libboost1.55-all-dev libxrender-dev libturbojpeg \
+libboost1.55-all-dev libxrender-dev libturbojpeg python-pyside \
 automake libtool libpango1.0-dev python-psutil libffi-dev -y
 ##python-usb has some depency-error
 
@@ -129,7 +129,6 @@ pip install --upgrade --pre pyusb
 pip install --install-option='--no-luajit' lupa
 
 ##enable spreads GUI packages by installing PySide and fixing symbolic link problem
-sudo apt-get install python-pyside -y
 sudo ln -s /usr/lib/python2.7/dist-packages/PySide ~/.spreads/lib/python2.7/site-packages/PySide
 
 ##add current user to staff group  (the word ´username´ must be replaced by the current username)
