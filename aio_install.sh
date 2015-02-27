@@ -2,7 +2,7 @@
 set -e
 set +x
 # Redirect stdout ( > ) into a named pipe ( >() ) running "tee"
-exec > >..\(tee $(date +%F)_$(date +"%I-%M-%S")_spreads_deploy_log.txt)
+exec > >(tee $(date +%F)_$(date +"%I-%M-%S")_spreads_deploy_log.txt)
 exec 2>&1
 ##starting from a clean 14.04 system
 sudo apt-get update
