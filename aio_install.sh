@@ -39,6 +39,7 @@ then
 git clone https://code.google.com/p/tesseract-ocr/
 fi
 cd tesseract-ocr/tessdata
+## check if the trainingfiles are there and if not add them from git
 if [[ ! -f deu.traineddata ]]
 then
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
