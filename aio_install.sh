@@ -32,6 +32,7 @@ cd leptonica-1.71/
 ./configure
 make -j
 sudo make install
+cd ..
 }
 ## install tesseract from git
 command -v tesseract >/dev/null 2>&1 || {
