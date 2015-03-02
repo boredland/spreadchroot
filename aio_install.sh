@@ -18,7 +18,7 @@ ruby-hpricot git imagemagick build-essential \
 libqt4-dev libjpeg8-dev libjpeg-turbo8-dev libjpeg-dev git \
 ghostscript ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 \
 irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1 libssl-dev \
-zlib1g-dev cmake zlib1g-dev libpng12-dev libtiff5-dev \
+zlib1g-dev cmake zlib1g-dev libpng12-dev libtiff5-dev libhidapi-dev \
 libboost1.55-all-dev libxrender-dev libturbojpeg python-pyside \
 automake libtool libpango1.0-dev python-psutil libffi-dev -y
 ##python-usb has some depency-error
