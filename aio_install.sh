@@ -103,13 +103,13 @@ if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"
 then
 sudo sh -c "echo '/usr/local/lib/chdkptp/' >> /etc/ld.so.conf.d/spreads.conf"
 fi
-sed -i -e 's/KERNEL\!="eth\*|/KERNEL\!="/' /lib/udev/rules.d/75-persistent-net-generator.rules
-rm -f /etc/udev/rules.d/70-persistent-net.rules
 
 ## Add udev rule for hidtrigger
 if grep -q 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' "/etc/udev/rules.d/99-usb.rules"
 then
 sudo sh -c "echo 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' > /etc/udev/rules.d/99-usb.rules"
+sed -i -e 's/KERNEL\!="eth\*|/KERNEL\!="/' /lib/udev/rules.d/75-persistent-net-generator.rules
+rm -f /etc/udev/rules.d/70-persistent-net.rules
 fi
 ##reload the system-wide libraries paths
 sudo ldconfig
