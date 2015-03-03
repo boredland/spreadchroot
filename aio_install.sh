@@ -51,9 +51,7 @@ virtualenv ~/.spreads
 source ~/.spreads/bin/activate
 echo "source ~/.spreads/bin/activate" >> ~/.bashrc
 fi
-pip install pycparser 
-pip install cffi 
-pip install jpegtran-cffi
+pip install pycparser cffi jpegtran-cffi
 pip install --upgrade --pre pyusb
 pip install --install-option='--no-luajit' lupa
 
