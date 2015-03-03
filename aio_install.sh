@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 set -x
 # Redirect stdout ( > ) into a named pipe ( >() ) running "tee"
 exec > >(tee $(date +%F)_$(date +"%I-%M-%S")_spreads_deploy_log.txt)
@@ -13,50 +12,28 @@ echo "Please set the number of cores for the c-compiler:"
 read j
 
 ## aptitude
-sh scripts/aptitude.sh $mode
+./scripts/aptitude.sh $mode
 
-##install latest leptonica
-sh scripts/leptonica.sh $mode $j
+##Compile and install latest leptonica
+./scripts/leptonica.sh $mode $j
 
-## install tesseract from git
-sh scripts/tesseract.sh $mode $j
-exit 0
-##Install jbig2enc
-command -v jbig2 >/dev/null 2>&1 || {
-git clone https://github.com/agl/jbig2enc
-cd jbig2enc
-./autogen.sh
-./configure
-make -j
-sudo make install
-cd ..
-}
+##Compile install tesseract from git
+./scripts/tesseract.sh $mode $j
+
+##Compile and install jbig2enc
+./scripts/jbig2enc.sh $mode $j
 
 ##next install pdfbeads
-command -v pdfbeads >/dev/null 2>&1 || {
-git clone https://github.com/ifad/pdfbeads
-cd pdfbeads
-gem build pdfbeads.gemspec 
-sudo gem install pdfbeads-1.0.11.gem
-cd ..
-}
+./scripts/pdfbeads.sh $mode $j
+
 ##next install latest djvubind
-command -v djvubind >/dev/null 2>&1 || {
-git clone https://github.com/strider1551/djvubind
-cd djvubind
-sudo ./setup.py install
-cd ..
-}
+./scripts/djvubind.sh $mode $j
 
 ## Install Scantailor
-command -v scantailor-cli >/dev/null 2>&1 || {
-wget -O scantailor-enhanced-20140214.tar.bz2 http://downloads.sourceforge.net/project/scantailor/scantailor-devel/enhanced/scantailor-enhanced-20140214.tar.bz2
-tar xvjf scantailor-enhanced-20140214.tar.bz2
-cd scantailor-enhanced
-cmake .
-make -j
-sudo make install
-}
+./scripts/scantailor.sh $mode $j
+
+##now install libyaml
+./scripts/libyaml.sh $mode $j
 
 ##create and open a new file - not necessary I think
 if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"
@@ -73,18 +50,6 @@ rm -f /etc/udev/rules.d/70-persistent-net.rules
 fi
 ##reload the system-wide libraries paths
 sudo ldconfig
-
-##now install libyaml
-if [[ ! -f /usr/local/lib/libyaml-0.so.2.0.3 ]]
-then
-wget http://pyyaml.org/download/libyaml/yaml-0.1.5.tar.gz
-tar xvf yaml-0.1.5.tar.gz
-cd yaml-0.1.5
-./configure
-make -j
-sudo make install
-cd ..
-fi
 
 ##finally install spreads in an virtualenv, create a new one
 virtualenv ~/.spreads
@@ -108,11 +73,6 @@ echo "export LUA_PATH="$CHDKPTP_DIR/lua/?.lua"" >> ~/.bashrc
 echo "source ~/.spreads/bin/activate" >> ~/.bashrc 
 ## type 
 source ~/.bashrc
-## fix errors with turbojpeg - need paths for armhf
-#x86_64
-sudo ln -s /usr/lib/x86_64-linux-gnu/libturbojpeg.so.0.0.0 /usr/lib/x86_64-linux-gnu/libturbojpeg.so
-#gnueabihf
-#sudo ln -s /usr/lib/arm-linux-gnueabihf/libturbojpeg.so.0.0.0 /usr/lib/arm-linux-gnueabihf/libturbojpeg.so
 ##we need some more python modules for the spread web plugin
 pip install Flask
 pip install tornado
