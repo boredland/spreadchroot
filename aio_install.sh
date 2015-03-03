@@ -5,7 +5,7 @@ exec > >(tee $(date +%F)_$(date +"%I-%M-%S")_spreads_deploy_log.txt)
 exec 2>&1
 SCRIPTPATH="$( cd "$( echo "${BASH_SOURCE[0]%/*}" )" && pwd )"
 
-echo "Do you want to install for capturing only[1], server only [2] or full [3]:"
+echo "Do you want to install for capturing only [1], server only [2] or full [3]:"
 read mode
 
 echo "Please set the number of cores for the c-compiler:"
@@ -37,7 +37,7 @@ read j
 
 ## turbojpeg_fix
 ./scripts/fix_turbojpeg.sh
-
+exit 0
 ##create and open a new file - not necessary I think
 if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"
 then
