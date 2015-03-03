@@ -75,13 +75,7 @@ sudo adduser $(whoami) staff
 source ~/.bashrc
 
 ##we need some more python modules for the spread web plugin
-pip install Flask
-pip install tornado
-pip install requests
-pip install waitress
-pip install zipstream
-pip install Wand
-pip install Flask-Compress
+pip install Flask tornado requests waitress zipstream Wand Flask-Compress
 
 ##now install spreads
 wget http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz
