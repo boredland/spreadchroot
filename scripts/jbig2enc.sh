@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 set -e
 set -x
 if [[ $1 == 1 ]]; then exit 0;fi
