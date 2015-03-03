@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 set -x
 command -v tesseract >/dev/null 2>&1 || {
-if [[ ! -d tesseract-ocr ]]
-then
 git clone https://code.google.com/p/tesseract-ocr/
-fi
 cd tesseract-ocr
 git pull
 ./autogen.sh
