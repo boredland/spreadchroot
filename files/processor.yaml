@@ -16,7 +16,7 @@ plugins:
 - web
 driver: dummy
 core:
-    verbose: no
+    verbose: yes
     loglevel: info
     capture_keys: [' ', b]
     logfile: ~/.config/spreads/spreads.log
