@@ -37,12 +37,6 @@ read j
 
 ## turbojpeg_fix
 ./scripts/fix_turbojpeg.sh
-exit 0
-##create and open a new file - not necessary I think
-if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"
-then
-sudo sh -c "echo '/usr/local/lib/chdkptp/' >> /etc/ld.so.conf.d/spreads.conf"
-fi
 
 ## Add udev rule for hidtrigger
 if grep -q 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' "/etc/udev/rules.d/99-usb.rules"
@@ -93,6 +87,8 @@ pip install -e ".[web]"
 pip install -e ".[hidtrigger]"
 pip install chdkptp.py
 cd ..
+## Create chdkptp symlink
+./scripts/chdkptp.sh $mode
 ##Kill gphoto.
 pkill -9 gphoto2
 
