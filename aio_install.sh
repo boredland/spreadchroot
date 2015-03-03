@@ -20,7 +20,7 @@ sh scripts/leptonica.sh $mode $j
 
 ## install tesseract from git
 sh scripts/tesseract.sh $mode $j
-
+exit 0
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
 git clone https://github.com/agl/jbig2enc
