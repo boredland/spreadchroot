@@ -11,29 +11,32 @@ read mode
 echo "Please set the number of cores for the c-compiler:"
 read j
 
-## aptitude
+## Aptitude
 ./scripts/aptitude.sh $mode
 
-##Compile and install latest leptonica
+## Compile and install latest leptonica
 ./scripts/leptonica.sh $mode $j
 
-##Compile install tesseract from git
+## Compile install tesseract from git
 ./scripts/tesseract.sh $mode $j
 
-##Compile and install jbig2enc
+## Compile and install jbig2enc
 ./scripts/jbig2enc.sh $mode $j
 
-##next install pdfbeads
+## Install pdfbeads
 ./scripts/pdfbeads.sh $mode $j
 
-##next install latest djvubind
+## Install latest djvubind
 ./scripts/djvubind.sh $mode $j
 
 ## Install Scantailor
 ./scripts/scantailor.sh $mode $j
 
-##now install libyaml
+## Install libyaml
 ./scripts/libyaml.sh $mode $j
+
+## turbojpeg_fix
+./scripts/fix_turbojpeg.sh
 
 ##create and open a new file - not necessary I think
 if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"
