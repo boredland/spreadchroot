@@ -8,7 +8,7 @@ git clone https://github.com/agl/jbig2enc
 cd jbig2enc
 ./autogen.sh
 ./configure
-make -j$2
+make -j$1
 sudo make install
 cd ..
 }
