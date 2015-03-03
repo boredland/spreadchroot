@@ -1,0 +1,22 @@
+device:
+    focus_mode: autofocus_all
+    upside_down: no
+    flip_target_pages: no
+    single: no
+    depends: 0
+    parallel_capture: yes
+    test: 1337
+    super: foo
+plugins:
+- autorotate
+- scantailor
+- tesseract
+- djvubind
+- pdfbeads
+- web
+driver: dummy
+core:
+    verbose: no
+    loglevel: info
+    capture_keys: [' ', b]
+    logfile: ~/.config/spreads/spreads.log
