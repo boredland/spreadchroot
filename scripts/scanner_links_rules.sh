@@ -18,8 +18,3 @@ if grep -q "CHDKPTP_DIR=/usr/local/lib/chdkptp" ~/.bashrc
 then
 echo "export CHDKPTP_DIR=/usr/local/lib/chdkptp" >> ~/.bashrc 
 fi
-
-if grep -q "source ~/.spreads/bin/activate" ~/.bashrc
-then
-echo "source ~/.spreads/bin/activate" >> ~/.bashrc fi
-fi
