@@ -1,7 +1,0 @@
-#!/bin/bash
-#
-# Matti Kariluoma <matti@kariluo.ma> 2014 Jan 31
-
-LUA_PATH=/usr/local/lib/chdkptp/lua/?.lua /usr/local/lib/chdkptp/chdkptp $@
-
-exit 0

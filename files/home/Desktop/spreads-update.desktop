@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Type=Application
-Exec=xterm -e ~/bin/update
-Icon=/usr/share/pixmaps/gksu-root-terminal.png
-Name=Spreads Update
-Comment=Stop any running spreads before you start that.
-Categories=Application;
