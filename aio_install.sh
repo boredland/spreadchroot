@@ -5,10 +5,10 @@ exec > >(tee $(date +%F)_$(date +"%I-%M-%S")_spreads_deploy_log.txt)
 exec 2>&1
 SCRIPTPATH="$( cd "$( echo "${BASH_SOURCE[0]%/*}" )" && pwd )"
 
-echo "Do you want to install for capturing only [1], server only [2] or full [3]:"
+echo "Do you want to install for capturing only [1], server only [2] or full [Enter for full]:"
 read mode
 
-echo "Please set the number of cores for the c-compiler:"
+echo "Please set the number of cores for the c-compiler [Enter for auto]:"
 read j
 
 ## Aptitude
