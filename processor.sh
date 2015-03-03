@@ -30,8 +30,7 @@ rubygems1.9.1 ruby1.9.1-dev imagemagick -y
 sudo ldconfig
 
 ## Install spreads
-sudo pip install jpegtran-cffi Flask requests zipstream tornado Wand
-sudo pip install http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz
+./scripts/spreads.sh
 
 mkdir ~/.config
 mkdir ~/.config/spreads
