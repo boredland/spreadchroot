@@ -45,6 +45,8 @@ sudo ldconfig
 ##finally install spreads in an virtualenv, create a new one
 if grep -q "source ~/.spreads/bin/activate" ~/.bashrc
 then
+echo "## Virtualenv already in bashrc."
+else
 virtualenv ~/.spreads
 source ~/.spreads/bin/activate
 echo "source ~/.spreads/bin/activate" >> ~/.bashrc
@@ -59,8 +61,10 @@ pip install --install-option='--no-luajit' lupa
 ## I think noone needs the gui anymore.
 ##sudo ln -s /usr/lib/python2.7/dist-packages/PySide ~/.spreads/lib/python2.7/site-packages/PySide
 ## Add lua to bashrc
-if grep -q "LUA_PATH="$CHDKPTP_DIR/lua/?.lua"" ~/.bashrc; 
+if grep -q "LUA_PATH="$CHDKPTP_DIR/lua/?.lua"" ~/.bashrc
 then
+echo "## Lua already in bashrc."
+else
 echo "export LUA_PATH="$CHDKPTP_DIR/lua/?.lua"" >> ~/.bashrc 
 fi
 
