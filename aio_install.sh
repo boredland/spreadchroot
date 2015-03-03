@@ -17,34 +17,10 @@ sh scripts/aptitude.sh $mode
 
 ##install latest leptonica
 sh scripts/leptonica.sh $mode $j
-exit 0
+
 ## install tesseract from git
-command -v tesseract >/dev/null 2>&1 || {
-if [[ ! -d tesseract-ocr ]]
-then
-git clone https://code.google.com/p/tesseract-ocr/
-fi
-cd tesseract-ocr/tessdata
-## check if the trainingfiles are there and if not add them from git
-if [[ ! -f deu.traineddata ]]
-then
-git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
-cp tessdata/* .
-sudo rm -r tessdata
-cd ..
-else 
-cd ..
-fi
-git pull
-./autogen.sh
-./configure
-make -j
-sudo make install
-make -j training
-sudo make training-install
-sudo make install LANGS=
-cd ..
-}
+sh scripts/tesseract.sh $mode $j
+
 ##Install jbig2enc
 command -v jbig2 >/dev/null 2>&1 || {
 git clone https://github.com/agl/jbig2enc
