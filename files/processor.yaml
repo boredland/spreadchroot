@@ -20,3 +20,25 @@ core:
     loglevel: info
     capture_keys: [' ', b]
     logfile: ~/.config/spreads/spreads.log
+web:
+    mode: full
+    standalone_device: no
+    debug: no
+    postprocessing_server: ''
+    project_dir: ~/scans
+    port: 5000
+tesseract:
+    language: deu
+scantailor:
+    content: yes
+    detection: content
+    rotate: no
+    deskew: yes
+    split_pages: yes
+    autopilot: yes
+    auto_margins: yes
+    margins:
+    - 2.5
+    - 2.5
+    - 2.5
+    - 2.5
