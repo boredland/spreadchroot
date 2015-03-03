@@ -8,7 +8,7 @@ tar xvf leptonica-1.71.tar.gz
 cd leptonica-1.71/
 ./autobuild
 ./configure
-make -j$2
+make -j$1
 sudo make install
 cd ..
 }
