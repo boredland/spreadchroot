@@ -46,7 +46,7 @@ if grep -q "source ~/.spreads/bin/activate" ~/.bashrc
 then
 virtualenv ~/.spreads
 source ~/.spreads/bin/activate
-echo "source ~/.spreads/bin/activate" >> ~/.bashrc fi
+echo "source ~/.spreads/bin/activate" >> ~/.bashrc
 fi
 pip install pycparser 
 pip install cffi 
