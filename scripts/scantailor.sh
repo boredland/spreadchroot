@@ -6,6 +6,6 @@ wget -O scantailor-enhanced-20140214.tar.bz2 http://downloads.sourceforge.net/pr
 tar xvjf scantailor-enhanced-20140214.tar.bz2
 cd scantailor-enhanced
 cmake .
-make -j
+make -j$2
 sudo make install
 }
