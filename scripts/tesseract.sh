@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 set -x
 command -v tesseract >/dev/null 2>&1 || {
 if [[ ! -d tesseract-ocr ]]
