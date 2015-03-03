@@ -88,7 +88,7 @@ pip install -e ".[hidtrigger]"
 pip install chdkptp.py
 cd ..
 ## Create chdkptp symlink
-./scripts/chdkptp.sh $mode
+./scripts/scanner_links_rules.sh $mode
 ##Kill gphoto.
 pkill -9 gphoto2
 
