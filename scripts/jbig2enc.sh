@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+echo blubb
+
 set -e
 set -x
-echo blubb
 if [[ $1 == 1 ]]; then exit 0;fi
 command -v jbig2 >/dev/null 2>&1 || {
   echo blubb2
