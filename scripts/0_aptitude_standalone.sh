@@ -1,3 +1,7 @@
+##starting from a clean 14.04 system
+sudo apt-get update
+sudo apt-get upgrade	
+##now install all dependcies
 sudo apt-get install python2.7 python2.7-dev python-virtualenv \
 python-tk idle python-pmw python-imaging \
 python-pip libpython2.7-dev libusb-dev \
