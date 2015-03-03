@@ -5,9 +5,9 @@ threads=`cat /proc/cpuinfo | grep processor | wc -l`
 threads=$((threads - 1))
 ## general depencies
 sudo apt-get install python2.7-dev python-pip build-essential \
-pkg-config libffi-dev libmagickwand-dev python-cffi libturbojpeg rubygems1.9.1 -y
+pkg-config libffi-dev libmagickwand-dev python-cffi libturbojpeg  -y
 ## building depencies
-sudo apt-get install automake cmake libqt4-dev libboost1.55-all-dev ruby1.9.1-dev -y
+sudo apt-get install automake cmake libqt4-dev libboost1.55-all-dev rubygems1.9.1 ruby1.9.1-dev imagemagick -y
 
 ## Compile and install latest leptonica
 ./scripts/leptonica.sh $threads
