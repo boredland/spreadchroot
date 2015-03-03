@@ -38,13 +38,6 @@ read j
 ## turbojpeg_fix
 ./scripts/fix_turbojpeg.sh
 
-## Add udev rule for hidtrigger
-if grep -q 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' "/etc/udev/rules.d/99-usb.rules"
-then
-sudo sh -c "echo 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' > /etc/udev/rules.d/99-usb.rules"
-sed -i -e 's/KERNEL\!="eth\*|/KERNEL\!="/' /lib/udev/rules.d/75-persistent-net-generator.rules
-rm -f /etc/udev/rules.d/70-persistent-net.rules
-fi
 ##reload the system-wide libraries paths
 sudo ldconfig
 
@@ -59,17 +52,20 @@ pip install --upgrade --pre pyusb
 pip install --install-option='--no-luajit' lupa
 
 ##enable spreads GUI packages by installing PySide and fixing symbolic link problem
-sudo ln -s /usr/lib/python2.7/dist-packages/PySide ~/.spreads/lib/python2.7/site-packages/PySide
+## I think noone needs the gui anymore.
+##sudo ln -s /usr/lib/python2.7/dist-packages/PySide ~/.spreads/lib/python2.7/site-packages/PySide
+## Add lua to bashrc
+if grep -q "LUA_PATH="$CHDKPTP_DIR/lua/?.lua" ~/.bashrc
+then
+echo "export LUA_PATH="$CHDKPTP_DIR/lua/?.lua" >> ~/.bashrc 
+fi
 
 ##add current user to staff group  (the word ´username´ must be replaced by the current username)
 sudo adduser $(whoami) staff
-##ow add the lua env variable to the global path in order that the chdkptp command will work
-#!#add check!
-echo "export CHDKPTP_DIR=/usr/local/lib/chdkptp" >> ~/.bashrc 
-echo "export LUA_PATH="$CHDKPTP_DIR/lua/?.lua"" >> ~/.bashrc 
-echo "source ~/.spreads/bin/activate" >> ~/.bashrc 
+
 ## type 
 source ~/.bashrc
+
 ##we need some more python modules for the spread web plugin
 pip install Flask
 pip install tornado
@@ -78,17 +74,23 @@ pip install waitress
 pip install zipstream
 pip install Wand
 pip install Flask-Compress
+
 ##now install spreads
 wget http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz
 tar xvf spreads-latest.tar.gz
 cd spreads-*
 pip install .
 pip install -e ".[web]"
+if [[ ! $1 == 2 ]]
+then 
 pip install -e ".[hidtrigger]"
 pip install chdkptp.py
+fi
 cd ..
+
 ## Create chdkptp symlink
 ./scripts/scanner_links_rules.sh $mode
+
 ##Kill gphoto.
 pkill -9 gphoto2
 
