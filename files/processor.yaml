@@ -21,9 +21,9 @@ core:
     capture_keys: [' ', b]
     logfile: ~/.config/spreads/spreads.log
 web:
-    mode: full
+    mode: processor
     standalone_device: no
-    debug: no
+    debug: yes
     postprocessing_server: ''
     project_dir: ~/scans
     port: 5000
