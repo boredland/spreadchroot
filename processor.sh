@@ -26,5 +26,5 @@ sudo apt-get install automake cmake libqt4-dev libboost1.55-all-dev ruby1.9.1-de
 
 ## Install Scantailor
 ./scripts/scantailor.sh $threads
-
+sudo ldconfig
 exit 0
