@@ -42,9 +42,12 @@ read j
 sudo ldconfig
 
 ##finally install spreads in an virtualenv, create a new one
+if grep -q "source ~/.spreads/bin/activate" ~/.bashrc
+then
 virtualenv ~/.spreads
 source ~/.spreads/bin/activate
-
+echo "source ~/.spreads/bin/activate" >> ~/.bashrc fi
+fi
 pip install pycparser 
 pip install cffi 
 pip install jpegtran-cffi
