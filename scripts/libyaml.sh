@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 set -x
-if [[ $1 == 1 ]]; then exit 0;fi
 if [[ ! -f /usr/local/lib/libyaml-0.so.2.0.3 ]]
 then
 wget http://pyyaml.org/download/libyaml/yaml-0.1.5.tar.gz
