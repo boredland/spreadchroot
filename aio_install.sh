@@ -98,7 +98,8 @@ cd ..
 
 ## Create chdkptp symlink
 ./scripts/scanner_links_rules.sh $mode
-
+## Create Spreads config folder
+mkdir ~/.config/spreads
 ##Kill gphoto.
 pkill -9 gphoto2
 
