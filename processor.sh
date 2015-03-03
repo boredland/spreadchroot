@@ -7,7 +7,7 @@ threads=$((threads - 1))
 sudo apt-get install python2.7-dev python-pip build-essential \
 pkg-config libffi-dev libmagickwand-dev python-cffi libturbojpeg rubygems1.9.1 -y
 ## building depencies
-sudo apt-get install automake cmake libqt4-dev libboost1.55-all-dev -y
+sudo apt-get install automake cmake libqt4-dev libboost1.55-all-dev ruby1.9.1-dev -y
 
 ## Compile and install latest leptonica
 ./scripts/leptonica.sh $threads
