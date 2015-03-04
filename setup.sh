@@ -5,7 +5,7 @@ exec > >(tee $(date +%F)_$(date +"%I-%M-%S")_spreads_deploy_log.txt)
 exec 2>&1
 SCRIPTPATH="$( cd "$( echo "${BASH_SOURCE[0]%/*}" )" && pwd )"
 
-echo "Do you want to install for capturing only [1], processing-server only [2] or full [Enter for full]: "
+echo "Do you want to install Standalone [1], Processing [2] or Both [3]: "
 read mode
 
 mkdir ~/.config
