@@ -25,13 +25,7 @@ rubygems1.9.1 ruby1.9.1-dev imagemagick -y
 
 ## Install Scantailor
 ./scripts/scantailor.sh $threads
+
 sudo ldconfig
-
-## Install spreads
-./scripts/spreads.sh
-
-mkdir ~/.config
-mkdir ~/.config/spreads
-cp files/processor.yaml ~/.config/spreads/config.yaml
 
 exit 0
