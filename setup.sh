@@ -32,6 +32,7 @@ sudo pip install lupa --install-option="--no-luajit"
 sudo pip install chdkptp.py
 sudo apt-get install libgphoto2-dev -y
 sudo pip install enum gphoto2-cffi
+./scripts/scanner_links_rules.sh
 fi
 
 ## Install Config files
