@@ -53,4 +53,9 @@ then
 cp files/full.yaml ~/.config/spreads/config.yaml
 echo "## Installed Config for chdkptp, if you want gphoto please re-run spread configure."
 fi
+
+## Adding a Startup-Script
+sudo cp files/spread /etc/init.d/spread
+sudo chmod a+x /etc/init.d/spread
+
 exit 0
