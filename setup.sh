@@ -31,7 +31,7 @@ sudo apt-get install liblua5.2-dev libusb-dev
 sudo pip install lupa --install-option="--no-luajit"
 sudo pip install chdkptp.py
 sudo apt-get install libgphoto2-dev
-sudo pip install gphoto2-cffi
+sudo pip install enum gphoto2-cffi
 fi
 
 ## Install Config files
@@ -45,6 +45,7 @@ if [[ $mode == 2 ]]
 then
 cp files/processor.yaml ~/.config/spreads/config.yaml
 fi
+
 if [[ $mode == 3 ]] 
 then
 cp files/full.yaml ~/.config/spreads/config.yaml
