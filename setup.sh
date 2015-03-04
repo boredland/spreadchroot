@@ -27,10 +27,10 @@ if [[ $mode == 2 ]]
 then
 echo "## Will neither install chdkptp, nor gphoto2."
 else
-sudo apt-get install liblua5.2-dev libusb-dev
+sudo apt-get install liblua5.2-dev libusb-dev -y
 sudo pip install lupa --install-option="--no-luajit"
 sudo pip install chdkptp.py
-sudo apt-get install libgphoto2-dev
+sudo apt-get install libgphoto2-dev -y
 sudo pip install enum gphoto2-cffi
 fi
 
