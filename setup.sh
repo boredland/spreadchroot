@@ -33,7 +33,7 @@ sudo apt-get install liblua5.2-dev libusb-dev libgphoto2-dev libhidapi-dev -y
 sudo pip install lupa --install-option="--no-luajit"
 sudo pip install enum34 gphoto2-cffi hidapi-cffi
 ./scripts/scanner_links_rules.sh
-sudo pip install "http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz#egg=spreads[chdkcamera,web,hidtrigger,gphoto2camera]"
+sudo pip install "http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz#egg=spreads[chdkcamera,hidtrigger,gphoto2camera]"
 fi
 
 ## Install Config files
