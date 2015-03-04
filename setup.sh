@@ -20,6 +20,7 @@ else
 fi
 
 ## Install spreads
+./scripts/fix_turbojpeg.sh
 ./scripts/spreads.sh
 
 ## Install chdkptp
