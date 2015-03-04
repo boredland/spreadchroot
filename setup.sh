@@ -38,11 +38,14 @@ fi
 if [[ $mode == 1 ]] 
 then
 cp files/standalone.yaml ~/.config/spreads/config.yaml
-echo "## Installed Config for chdkptp, if you want gphoto please re-run 'spread configure'."
-else if [[ $mode == 2 ]] 
+echo "## Installed Config for chdkptp, if you want gphoto please re-run spread configure."
+fi
+
+if [[ $mode == 2 ]] 
 then
 cp files/processor.yaml ~/.config/spreads/config.yaml
-else if [[ $mode == 3 ]] 
+fi
+if [[ $mode == 3 ]] 
 cp files/full.yaml ~/.config/spreads/config.yaml
 echo "## Installed Config for chdkptp, if you want gphoto please re-run spread configure."
 fi
