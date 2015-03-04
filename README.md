@@ -4,12 +4,14 @@ Much of the program will be compiled on the client-side, so it should be cross-p
 ## How it works:
 #Just install git on the platform of your choice:
 ```ubuntu terminal```
-sudo apt-get install git
+sudo apt-get update && sudo apt-get install git-core screen -y 
 #Clone this repo by typing 
 ```ubuntu terminal```
 git clone https://github.com/boredland/spreads-deploy
 #Enter the directory and run the script
 ```ubuntu terminal```
 cd spreads-deploy
-git pull && ./setup.sh
+screen -S "setup" -d -m
+screen -r "setup" -X stuff $'./setup.sh\n'
+screen -r "setup"
 # Whenever the program asks for superuser-permissions this should be okay. 
