@@ -11,7 +11,12 @@ git clone https://github.com/boredland/spreads-deploy
 #Enter the directory and run the script
 ```ubuntu terminal```
 cd spreads-deploy
+
 screen -S "setup" -d -m
+
 screen -r "setup" -X stuff $'./setup.sh\n'
+
 screen -r "setup"
+
 # Whenever the program asks for superuser-permissions this should be okay. 
+Reboot your device afterwards!
