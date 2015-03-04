@@ -19,10 +19,6 @@ else
 ./processor.sh
 fi
 
-## Install spreads
-./scripts/fix_turbojpeg.sh
-./scripts/spreads.sh
-
 ## Install chdkptp
 if [[ $mode == 2 ]]
 then
@@ -32,9 +28,13 @@ sudo apt-get install liblua5.2-dev libusb-dev -y
 sudo pip install lupa --install-option="--no-luajit"
 sudo pip install chdkptp.py hidapi-cffi
 sudo apt-get install libgphoto2-dev libhidapi-dev -y
-sudo pip install enum gphoto2-cffi
+sudo pip install enum34 gphoto2-cffi
 ./scripts/scanner_links_rules.sh
 fi
+
+## Install spreads
+./scripts/fix_turbojpeg.sh
+./scripts/spreads.sh $mode
 
 ## Install Config files
 if [[ $mode == 1 ]] 
