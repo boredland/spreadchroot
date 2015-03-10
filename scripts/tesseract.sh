@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -x
 set -e
-if [[ $1 == 1 ]]; then exit 0;fi
+if [[ $2 == 1 ]]; then exit 0;fi
 command -v tesseract >/dev/null 2>&1 || {
 git clone https://code.google.com/p/tesseract-ocr/
 cd tesseract-ocr
