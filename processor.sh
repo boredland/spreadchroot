@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 set -x
+set -x
 ## get number of cores
 threads=`cat /proc/cpuinfo | grep processor | wc -l`
 threads=$((threads - 1))
-
+if [[ $threads = 0 ]]
+then 
+threads=$((threads + 1))
+fi
 ## building depencies
 sudo apt-get install automake cmake libqt4-dev libboost-dev \
 rubygems1.9.1 ruby1.9.1-dev imagemagick -y
