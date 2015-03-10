@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -x
+set -e
 ##autoload chdkptp
 if grep -q /usr/local/lib/chdkptp/ "/etc/ld.so.conf.d/spreads.conf"
 then
