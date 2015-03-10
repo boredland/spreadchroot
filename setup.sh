@@ -12,9 +12,11 @@ read mode
 else 
 mode=$1
 fi
-
+if [[ ! -d ~/.config ]]
+then
 mkdir ~/.config
 mkdir ~/.config/spreads
+fi
 ## install general depencies
 ./scripts/depencies_general.sh
 ## install processing depencies
