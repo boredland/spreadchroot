@@ -13,21 +13,21 @@ sudo apt-get install automake cmake libqt4-dev libboost-dev \
 rubygems1.9.1 ruby1.9.1-dev imagemagick -y
 
 ## Compile and install latest leptonica
-./scripts/leptonica.sh $threads
+./scripts/leptonica.sh $threads $1
 
 ## Compile install tesseract from git
-./scripts/tesseract.sh $threads
+./scripts/tesseract.sh $threads $1
 
 ## Compile and install jbig2enc
-./scripts/jbig2enc.sh $threads
+./scripts/jbig2enc.sh $threads $1
 
 ## Install pdfbeads
-./scripts/pdfbeads.sh $threads
+./scripts/pdfbeads.sh $threads $1
 
 ## Install latest djvubind
-./scripts/djvubind.sh $threads
+./scripts/djvubind.sh $threads $1
 
 ## Install Scantailor
-./scripts/scantailor.sh $threads
+./scripts/scantailor.sh $threads $1
 
 sudo ldconfig
