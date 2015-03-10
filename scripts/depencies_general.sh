@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 ##starting from a clean 14.04 system
 sudo apt-get update
 sudo apt-get upgrade	
