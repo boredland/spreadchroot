@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -x
-set -x
+set -e
 ## get number of cores
 threads=`cat /proc/cpuinfo | grep processor | wc -l`
 threads=$((threads - 1))
