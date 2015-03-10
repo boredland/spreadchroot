@@ -9,7 +9,7 @@ then
 echo "Do you want to install Standalone [1], Processing [2] or Full [3]: "
 read mode
 else 
-mode = $1
+mode=$1
 fi
 
 mkdir ~/.config
