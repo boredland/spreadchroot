@@ -4,9 +4,13 @@
 exec > >(tee $(date +%F)_$(date +"%I-%M-%S")_spreads_deploy_log.txt)
 exec 2>&1
 SCRIPTPATH="$( cd "$( echo "${BASH_SOURCE[0]%/*}" )" && pwd )"
-
+if [[ $1 == "" ]]
+then
 echo "Do you want to install Standalone [1], Processing [2] or Full [3]: "
 read mode
+else 
+mode = $1
+fi
 
 mkdir ~/.config
 mkdir ~/.config/spreads
