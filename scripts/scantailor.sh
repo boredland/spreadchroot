@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 set -x
 if [[ $2 == 1 ]]; then exit 0;fi
 command -v scantailor-cli >/dev/null 2>&1 || {
