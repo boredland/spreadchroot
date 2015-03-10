@@ -23,7 +23,7 @@ fi
 if [[ $mode == 1 ]]
 then echo "## Will not install processing tools."
 else
-./processor.sh
+./processor.sh $mode
 fi
 
 ## Install spreads
