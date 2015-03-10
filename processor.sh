@@ -5,7 +5,7 @@ threads=`cat /proc/cpuinfo | grep processor | wc -l`
 threads=$((threads - 1))
 
 ## building depencies
-sudo apt-get install automake cmake libqt4-dev libboost1.55-all-dev \
+sudo apt-get install automake cmake libqt4-dev libboost-dev \
 rubygems1.9.1 ruby1.9.1-dev imagemagick -y
 
 ## Compile and install latest leptonica
