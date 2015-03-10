@@ -15,5 +15,5 @@ cd ..
 if [[ ! -d tessdata ]]
 then
 git clone https://code.google.com/p/tesseract-ocr.tessdata/ tessdata
-sudo cp tessdata/* /usr/local/share/tessdata
 fi
+sudo cp tessdata/* /usr/local/share/tessdata
