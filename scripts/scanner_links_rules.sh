@@ -15,7 +15,7 @@ echo "## Udev-Rule already applied."
 else
 sudo sh -c "echo 'ACTION=="add", SUBSYSTEM=="usb", MODE:="666"' > /etc/udev/rules.d/99-usb.rules"
 sudo sed -i -e 's/KERNEL\!="eth\*|/KERNEL\!="/' /lib/udev/rules.d/75-persistent-net-generator.rules
-rm -f /etc/udev/rules.d/70-persistent-net.rules
+sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 if [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ]; then
   echo "We are chrooted!"
 else
