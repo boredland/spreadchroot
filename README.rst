@@ -1,3 +1,7 @@
+Spreadchroot aims to create a chroot-environment - mainly on android-based devices - to run a full spreads suite. It may be useful for other usecases as a spreads processor or a spreads standalone device.
+
+You'll find an install guide in the wiki (https://github.com/boredland/spreadchroot/wiki)
+
 Build Requirements
 ==================
 * `git`
@@ -37,7 +41,7 @@ There are some environment variables that you can set to customize the build:
 `DEBUG`
     Drop into a chroot shell after the image has finished building (default: `false`)
 `FROM_TARBALL`
-    Path to a spreads tarball created by ``python setup.py sdist``. If unset, install from Raspbian packages.
+    Path to a spreads tarball created by ``python setup.py sdist``. If unset, install from debian packages.
 
 The image will generate a debian image with up-to-date packages and spreads
 pre-installed and pre-configured in full-mode(for use with Canon A2200 cameras running CHDK).

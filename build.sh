@@ -3,7 +3,6 @@
 # Exit on errors
 ORIG_DIR=$(pwd)
 set -e
-set -x
 function print_info()
 {
     green='\e[0;32m'
