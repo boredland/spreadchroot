@@ -1,6 +1,8 @@
 Spreadchroot aims to create a chroot-environment - mainly on android-based devices - to run a full spreads suite. It may be useful for other usecases as a spreads processor or a spreads standalone device.
 
-You'll find an install guide in the wiki (https://github.com/boredland/spreadchroot/wiki)
+``Warning: Since some of the depencies (tesseract, jbig2enc, pdfbeads, scantailor) are compiled in your chroot, this will take some time. On a quite powerful machine a first built took me about 2 hours. I'll add some as precompiled packages soon, this will decrease building-time massively.``
+
+You'll find an install guide in the wiki (https://github.com/boredland/spreadchroot/wiki).
 
 Build Requirements
 ==================
