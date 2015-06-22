@@ -3,19 +3,22 @@ set -e
 set -x
 
 # Install spreads dependencies
-    apt-get -y --force-yes install --no-install-recommends \
-        python python-colorama python-yaml python-concurrent.futures \
-        python-blinker python-roman python-usb python-psutil libjpeg-dev \
-        python-flask python-requests python-wand python-netifaces \
-        python-dbus liblua5.2-dev libusb-dev python-cffi libturbojpeg-dev \
-        libgphoto2-dev 
-    apt-get -y install python-pip build-essential python2.7-dev pkg-config
-    pip install tornado
-    pip install jpegtran-cffi
-    pip install lupa --install-option="--no-luajit"
-    pip install chdkptp.py
-    pip install gphoto2-cffi
+    apt-get -y --force-yes install build-essential python3 python3-dev python3-pip pkg-config
+    apt-get -y --force-yes install --no-install-recommends python3-colorama \
+	python3-yaml python3-blinker python3-roman python3-psutil libjpeg-dev \
+        python3-flask python3-requests python3-wand python3-netifaces \
+        python3-dbus liblua5.2-dev libusb-dev python3-cffi libturbojpeg-dev \
+        libgphoto2-dev
+# Install python3-usb from debian-package
+URL='http://ftp.de.debian.org/debian/pool/main/p/pyusb/python3-usb_1.0.0~b2-1_armhf.deb'
+FILE=`mktemp`
+wget "$URL" -qO $FILE && sudo dpkg -i $FILE 
+rm $FILE
 
+# i think concurrent.futures is in python3 stdlib? perhaps. fuck it.
+    pip3 install lupa --install-option="--no-luajit"
+    pip3 install tornado jpegtran-cffi chdkptp.py gphoto2-cffi zipstream
+    pip3 install http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz
 # Create spreads configuration directoy
 mkdir -p /home/spreads/.config/spreads
 cp $DELIVERY_DIR/files/config.yaml /home/spreads/.config/spreads

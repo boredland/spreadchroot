@@ -181,8 +181,8 @@ for dep in binfmt-support qemu qemu-user-static debootstrap kpartx dmsetup dosfs
 done
 
 
-# Install raspbian key
-print_info "Fetching and installing rasbian public key from $RASBIAN_KEY_URL"
+# Install debian key
+print_info "Fetching and installing debian public key from $RASBIAN_KEY_URL"
 wget --quiet "$DEBIAN_KEY_URL" -O - | apt-key add - &>> "$LOG"
 
 # Create image file
