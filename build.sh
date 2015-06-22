@@ -323,5 +323,9 @@ sleep 15
 cleanup -clean
 
 print_info "Successfully created image ${IMG}"
+fbname=$(basename "${IMG}" .img)
+print_info "Compressing ${IMG} to $(date +%s)_$fbname.tgz"
+tar -zcvf $(date +%s)_$fbname.tgz ${IMG}
+rm ${IMG}
 trap - EXIT
 exit 0
