@@ -1,3 +1,7 @@
+Spreadchroot aims to create a chroot-environment - mainly on android-based devices - to run a full spreads suite. It may be useful for other usecases as a spreads processor or a spreads standalone device.
+
+You'll find an install guide in the wiki (https://github.com/boredland/spreadchroot/wiki)
+
 Build Requirements
 ==================
 * `git`
