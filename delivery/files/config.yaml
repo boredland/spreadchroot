@@ -1,0 +1,52 @@
+scantailor:
+    content: yes
+    rotate: no
+    deskew: yes
+    split_pages: yes
+    detection: content
+    autopilot: yes
+    auto_margins: yes
+    margins:
+    - 2.5
+    - 2.5
+    - 2.5
+    - 2.5
+core:
+    loglevel: debug
+    capture_keys: [' ', b]
+    logfile: ~/.config/spreads/spreads.log
+    convert_old: yes
+    verbose: yes
+web:
+    mode: full
+    standalone_device: no
+    debug: yes
+    postprocessing_server:
+    project_dir: ~/scans
+    port: 2060
+driver: chdkcamera
+plugins:
+- autorotate
+- scantailor
+- tesseract
+- pdfbeads
+- web
+device:
+    shutter_speed: 1/25
+    upside_down: no
+    flip_target_pages: no
+    focus_distance: 0
+    super: foo
+    sensitivity: 80
+    shoot_raw: no
+    zoom_level: 4
+    single: no
+    depends: 0
+    parallel_capture: yes
+    test: 1337
+    monochrome: no
+    focus_mode: autofocus_all
+    whitebalance: Auto
+    dpi: 300
+tesseract:
+    language: deu

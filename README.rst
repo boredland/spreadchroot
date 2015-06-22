@@ -1,0 +1,48 @@
+Build Requirements
+==================
+* `git`
+* `binfmt_misc` kernel module loaded
+* `qemu-arm-static`
+* `deboostrap`
+* `kpartx`
+* `mkfs.vfat`
+* `mkfs.ext4`
+* `dmsetup`
+
+Oneliner for Ubuntu 14.04:
+`sudo apt-get install git-core binfmt-support qemu qemu-user-static debootstrap kpartx dmsetup dosfstools apt-cacher-ng`
+
+
+Building
+========
+To generate an image, run the `build.sh` script as root:
+
+::
+
+    $ sudo ./build.sh
+    
+There are some environment variables that you can set to customize the build:
+
+`IMAGESIZE`
+    Target size for the image in MB (default: `4000`)
+`DEB_RELEASE`
+    Target Debian release, can be `stable`, `testing` or `unstable` (default: `jessie`)
+`DEFAULT_DEB_MIRROR`
+    Repository URL to grab packages from (default: `http://ftp.de.debian.org/debian/`)
+`USE_LOCAL_MIRROR`
+    For use with `apt-cacher-ng`, can be `true` or `false` (default: `true`)
+`SSH_KEY`
+    Public key to enable SSH Login for (default: `~/.ssh/id_rsa.pub`)
+`DEBUG`
+    Drop into a chroot shell after the image has finished building (default: `false`)
+`FROM_TARBALL`
+    Path to a spreads tarball created by ``python setup.py sdist``. If unset, install from Raspbian packages.
+
+The image will generate a debian image with up-to-date packages and spreads
+pre-installed and pre-configured in full-mode(for use with Canon A2200 cameras running CHDK).
+
+Login accounts:
+    * root:raspberry
+    * spreads:spreads
+    
+The `spreads` user is allowed to run all commands with superuser privileges through `sudo`.

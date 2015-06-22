@@ -1,12 +1,12 @@
 #!/bin/bash
 set -x
-if [[ $2 == 1 ]]; then exit 0;fi
-command -v jbig2 >/dev/null 2>&1 || {
+set -e
+
 git clone https://github.com/agl/jbig2enc
 cd jbig2enc
 ./autogen.sh
 ./configure
-make -j$1
-sudo make install
+make -j
+make install
 cd ..
-}
+rm -r jbig2enc
