@@ -10,7 +10,8 @@ Build Requirements
 * `dmsetup`
 
 Oneliner for Ubuntu 14.04:
-`sudo apt-get install git-core binfmt-support qemu qemu-user-static debootstrap kpartx dmsetup dosfstools apt-cacher-ng`
+::
+    sudo apt-get install git-core binfmt-support qemu qemu-user-static debootstrap kpartx dmsetup dosfstools apt-cacher-ng
 
 
 Building
