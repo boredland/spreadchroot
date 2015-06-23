@@ -2,10 +2,10 @@ Spreadchroot aims to create a chroot-environment - mainly on android-based devic
 
 ``Warning: Since some of the depencies (tesseract, jbig2enc, pdfbeads, scantailor) are compiled in your chroot, this will take some time. On a quite powerful machine a first built took me about 2 hours. I'll add some as precompiled packages soon, this will decrease building-time massively.``
 
-Log:
-* `2015-06-23 - First sucessful run. Yet untested.`
-* `2015-06-22 - Changed to Python3, removed many compiling steps.`
-* `2015-06-21 - first build nearly finished.`
+::
+    * `2015-06-23 - First sucessful run. Yet untested.`
+    * `2015-06-22 - Changed to Python3, removed many compiling steps.`
+    * `2015-06-21 - first build nearly finished.`
 
 You'll find an install guide in the wiki (https://github.com/boredland/spreadchroot/wiki).
 
