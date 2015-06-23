@@ -7,7 +7,7 @@ cd tesseract-ocr
 git pull
 ./autogen.sh
 ./configure
-make -j
+make -j12
 make install
 cd ..
 rm -r tesseract-ocr
