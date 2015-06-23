@@ -80,7 +80,7 @@ fi
 # When true, script will drop into a chroot shell at the end to inspect the
 # bootstrapped system
 if [ -z "$DEBUG" ]; then
-    DEBUG=true
+    DEBUG=false
 fi
 
 
