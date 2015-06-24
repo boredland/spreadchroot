@@ -314,9 +314,9 @@ mv buildlog.txt built/$timestamp"_"$fbname"_log.txt"
 md5sum built/$timestamp"_"$fbname".tgz" > built/$timestamp"_"$fbname.md5
 rm -f built/*_latest.*
 cd built
-ln -s $fbname"_latest.tgz" $timestamp"_"$fbname".tgz"
-ln -s $fbname"_log_latest.txt" $timestamp"_"$fbname"_log.txt"
-ln -s $fbname"_"$fbname".md5" $timestamp"_"$fbname".md5"
+ln -s $timestamp"_"$fbname".tgz" $timestamp"_"$fbname".tgz"
+ln -s $timestamp"_"$fbname"_log.txt" $fbname"_log_latest.txt"
+ln -s $timestamp"_"$fbname".md5" $fbname"_"$fbname".md5"
 cd ..
 trap - EXIT
 exit 0
