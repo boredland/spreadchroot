@@ -263,7 +263,7 @@ print_info "Running custom bootstrapping scripts"
 for path in $rootfs/usr/src/delivery/scripts/*; do
     script=$(basename "$path")
     print_info "- $script"
-    DELIVERY_DIR=/usr/src/delivery LANG=C chroot ${rootfs} "/usr/src/delivery/scripts/$script $CORES" &>> $LOG
+    DELIVERY_DIR=/usr/src/delivery LANG=C chroot ${rootfs} "/usr/src/delivery/scripts/$script" &>> $LOG
 done
 
 # Configure default mirror
