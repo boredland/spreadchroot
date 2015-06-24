@@ -25,5 +25,6 @@ mkdir -p /home/spreads/scans
 cp $DELIVERY_DIR/files/config.yaml /home/spreads/.config/spreads
 chown -R spreads /home/spreads/.config/spreads
 
-# Install spreads systemd service
+# Install spreads init.d service
 cp $DELIVERY_DIR/files/spreadserver /etc/init.d/
+chmod +x /etc/init.d/spreadserver

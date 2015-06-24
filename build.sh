@@ -115,9 +115,9 @@ if [ -z "$SSH_KEY" ]; then
 fi
 export SSH_KEY
 
-if [ -z "$RASBIAN_KEY_URL" ]; then
-    DEBIAN_KEY_URL="https://ftp-master.debian.org/keys/archive-key-8.asc"
-fi
+#if [ -z "$DEBIAN_KEY_URL" ]; then
+#    DEBIAN_KEY_URL="http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_8.0/Release.key"
+#fi
 
 # -------------------------------------------------------------------------- #
 
@@ -173,7 +173,7 @@ print_info "Create image mount point $rootfs"
 mkdir -p "${rootfs}"
 
 # Install dependencies
-for dep in binfmt-support qemu qemu-user-static debootstrap kpartx dmsetup dosfstools; do
+for dep in debian-archive-keyring binfmt-support qemu qemu-user-static debootstrap kpartx dmsetup dosfstools; do
   problem=$(dpkg -s $dep|grep installed)
   if [ "" == "$problem" ]; then
     print_info "No $dep. Setting up $dep"
@@ -183,7 +183,7 @@ done
 
 # Install debian key
 print_info "Fetching and installing debian public key from $RASBIAN_KEY_URL"
-wget --quiet "$DEBIAN_KEY_URL" -O - | apt-key add - &>> "$LOG"
+#wget --quiet "$DEBIAN_KEY_URL" -O - | apt-key add - &>> "$LOG"
 
 # Create image file
 print_info "Initializing image file $IMG"
@@ -232,8 +232,7 @@ cd "${rootfs}"
 
 # First stage of bootstrapping, from the outside
 print_info "Running debootstrap first stage"
-debootstrap --verbose --foreign --arch armhf --keyring \
-/etc/apt/trusted.gpg ${DEB_RELEASE} ${rootfs} ${DEB_MIRROR} &>> $LOG
+debootstrap --verbose --foreign --arch armhf --keyring=/usr/share/keyrings/debian-archive-keyring.gpg ${DEB_RELEASE} ${rootfs} ${DEB_MIRROR} &>> $LOG
 
 # Second stage, using chroot and qemu-arm from the inside
 print_info "Copying $QEMU_ARM_STATIC into $rootfs"
@@ -304,7 +303,10 @@ cleanup -clean
 print_info "Successfully created image ${IMG}"
 fbname=$(basename "${IMG}" .img)
 print_info "Compressing ${IMG} to $(date +%s)_$fbname.tgz"
-tar -zcvf $(date +"%Y-%m-%d")_$fbname.tgz spreadchroot.img
+timestamp=$(date +"%Y-%m-%d")
+tar -zcvf built/$(timestamp)_$(fbname).tgz spreadchroot.img
 rm ${IMG}
+df -h built/$(timestamp)_$(fbname).tgz
+mv buildlog.txt built/$(timestamp)_$(fbname)_buildlog.txt
 trap - EXIT
 exit 0
