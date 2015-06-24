@@ -12,6 +12,9 @@ You'll find an install guide in the wiki (https://github.com/boredland/spreadchr
 You'll find ready images at:
 http://ec2-52-28-157-49.eu-central-1.compute.amazonaws.com/
 
+The images are 4Gb large, leaving you a workspace of ~2.5Gb. If you want to resize that, refer to this tutorial:
+http://softwarebakery.com/shrinking-images-on-linux
+
 Build Requirements
 ==================
 * `git`

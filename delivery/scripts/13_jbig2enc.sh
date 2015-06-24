@@ -6,7 +6,7 @@ git clone https://github.com/agl/jbig2enc
 cd jbig2enc
 ./autogen.sh
 ./configure
-make -j12
+make -j
 make install
 cd ..
 rm -r jbig2enc

@@ -303,7 +303,7 @@ cleanup -clean
 print_info "Successfully created image ${IMG}"
 fbname=$(basename "${IMG}" .img)
 print_info "Compressing ${IMG} to $(date +%s)_$fbname.tgz"
-timestamp=$(date +"%Y-%m-%d")
+timestamp=$(date +"%Y_%m_%d-%H_%M")
 tar -zcvf built/$(timestamp)_$(fbname).tgz spreadchroot.img
 rm ${IMG}
 df -h built/$(timestamp)_$(fbname).tgz

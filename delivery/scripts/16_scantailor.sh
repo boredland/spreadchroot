@@ -7,7 +7,7 @@ set -e
 git clone -b enhanced --single-branch https://github.com/scantailor/scantailor
 cd scantailor*
 cmake .
-make -j12
+make -j
 make install
 cd ..
 rm -r scantailor*
