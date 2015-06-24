@@ -263,7 +263,7 @@ print_info "Running custom bootstrapping scripts"
 for path in $rootfs/usr/src/delivery/scripts/*; do
     script=$(basename "$path")
     print_info "- $script"
-    DELIVERY_DIR=/usr/src/delivery LANG=C chroot ${rootfs} "/usr/src/delivery/scripts/$script" &>> $LOG
+    DELIVERY_DIR=/usr/src/delivery LANG=C CORES=$CORES chroot ${rootfs} "/usr/src/delivery/scripts/$script" &>> $LOG
 done
 
 # Configure default mirror
@@ -314,7 +314,7 @@ mv buildlog.txt built/$timestamp"_"$fbname"_log.txt"
 md5sum built/$timestamp"_"$fbname".tgz" > built/$timestamp"_"$fbname.md5
 rm -f built/*_latest.*
 cd built
-ln -s $timestamp"_"$fbname".tgz" $timestamp"_"$fbname".tgz"
+ln -s $timestamp"_"$fbname".tgz" $timestamp"_"$fbname"_latest.tgz"
 ln -s $timestamp"_"$fbname"_log.txt" $fbname"_log_latest.txt"
 ln -s $timestamp"_"$fbname".md5" $fbname"_"$fbname".md5"
 cd ..
