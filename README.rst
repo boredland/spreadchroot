@@ -2,11 +2,15 @@ Spreadchroot aims to create a chroot-environment - mainly on android-based devic
 
 ``Warning: Since some of the depencies (tesseract, jbig2enc, pdfbeads, scantailor) are compiled in your chroot, this will take some time. On a quite powerful machine a first built took me about 2 hours. I'll add some as precompiled packages soon, this will decrease building-time massively.``
 ::
+   * `2015-06-24 - removed some steps, runs completely now. got back to init.d for compatibility reasons
    * `2015-06-23 - First sucessful run. Yet untested.`
-   * `2015-06-22 - Changed to Python3, removed many compiling steps.`
+   * `2015-06-22 - removed many compiling steps.`
    * `2015-06-21 - first build nearly finished.`
 
 You'll find an install guide in the wiki (https://github.com/boredland/spreadchroot/wiki).
+
+You'll find ready images at:
+http://ec2-52-28-157-49.eu-central-1.compute.amazonaws.com/
 
 Build Requirements
 ==================
@@ -21,7 +25,7 @@ Build Requirements
 
 Oneliner for Ubuntu 14.04:
 ::
-    sudo apt-get install git-core binfmt-support qemu qemu-user-static debootstrap kpartx dmsetup dosfstools apt-cacher-ng
+    sudo apt-get install debian-archive-keyring git-core binfmt-support qemu qemu-user-static debootstrap kpartx dmsetup dosfstools apt-cacher-ng
 
 
 Building

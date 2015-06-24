@@ -307,6 +307,11 @@ timestamp=$(date +"%Y-%m-%d")
 tar -zcvf built/$(timestamp)_$(fbname).tgz spreadchroot.img
 rm ${IMG}
 df -h built/$(timestamp)_$(fbname).tgz
-mv buildlog.txt built/$(timestamp)_$(fbname)_buildlog.txt
+mv buildlog.txt built/$(timestamp)_$(fbname)_log.txt
+md5sum built/$(timestamp)_$(fbname).tgz > built/$(timestamp)_$(fbname).md5
+rm -f built/*_latest.*
+ln -s built/$(fbname)_latest.tgz built/$(timestamp)_$(fbname).tgz
+ln -s built/$(fbname)_log_latest.txt built/$(timestamp)_$(fbname)_log.txt
+ln -s built/$(fbname)_$(fbname).md5 built/$(timestamp)_$(fbname).md5
 trap - EXIT
 exit 0
