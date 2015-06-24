@@ -93,7 +93,10 @@ fi
 if [ -z "$IMAGESIZE" ]; then
     IMAGESIZE="4000"
 fi
-
+# Number of compiling threads
+if [ -z "$CORES" ]; then
+    CORES=4
+fi
 # Debian version
 if [ -z "$DEB_RELEASE" ]; then
     DEB_RELEASE="jessie"
@@ -260,7 +263,7 @@ print_info "Running custom bootstrapping scripts"
 for path in $rootfs/usr/src/delivery/scripts/*; do
     script=$(basename "$path")
     print_info "- $script"
-    DELIVERY_DIR=/usr/src/delivery LANG=C chroot ${rootfs} "/usr/src/delivery/scripts/$script" &>> $LOG
+    DELIVERY_DIR=/usr/src/delivery LANG=C chroot ${rootfs} "/usr/src/delivery/scripts/$script $CORES" &>> $LOG
 done
 
 # Configure default mirror
