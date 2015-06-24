@@ -95,7 +95,7 @@ if [ -z "$IMAGESIZE" ]; then
 fi
 # Number of compiling threads
 if [ -z "$CORES" ]; then
-    CORES=4
+    CORES=2
 fi
 # Debian version
 if [ -z "$DEB_RELEASE" ]; then
@@ -312,9 +312,9 @@ rm ${IMG}
 df -h built/$timestamp"_"$fbname".tgz"
 mv buildlog.txt built/$timestamp"_"$fbname"_log.txt"
 md5sum built/$timestamp"_"$fbname".tgz" > built/$timestamp"_"$fbname.md5
-rm -f built/*_latest.*
-ln -s built/$fbname"_latest.tgz" built/$timestamp"_"$fbname".tgz"
-ln -s built/$fbname"_log_latest.txt" built/$timestamp"_"$fbname"_log.txt"
-ln -s built/$fbname"_"$fbname".md5" built/$timestamp"_"$fbname".md5"
+#rm -f built/*_latest.*
+#ln -s built/$fbname"_latest.tgz" built/$timestamp"_"$fbname".tgz"
+#ln -s built/$fbname"_log_latest.txt" built/$timestamp"_"$fbname"_log.txt"
+#ln -s built/$fbname"_"$fbname".md5" built/$timestamp"_"$fbname".md5"
 trap - EXIT
 exit 0
