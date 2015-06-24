@@ -6,7 +6,9 @@ set -x
 apt-get -y install --no-install-recommends \
     cifs-utils htop less ntp openssh-server sudo nano \
     bash-completion automake cmake libqt4-dev libboost1.55-all-dev \
-    ruby-dev rubygems ruby imagemagick libtool libleptonica-dev git-core zlib1g-dev
+    ruby-dev rubygems ruby imagemagick libtool libleptonica-dev git-core zlib1g-dev \
+    selinux-basics selinux-utils checkpolicy libapol4 libqpol1 policycoreutils psmisc
+    
 # 
 # User spreads should be able to shut the system down (used in web interface)
 echo 'spreads ALL=NOPASSWD: /sbin/shutdown' >> /etc/sudoers

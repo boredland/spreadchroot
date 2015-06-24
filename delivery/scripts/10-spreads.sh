@@ -10,11 +10,12 @@ liblua5.2-dev libusb-dev libgphoto2-dev python-yaml \
 python-colorama python-yaml python-concurrent.futures \
 python-blinker python-roman python-usb python-psutil \
 python-flask python-requests python-wand python-netifaces \
-python-dbus
+python-dbus python-ipy python-selinux python-semanage \
+python-sepolgen python-sepolicy python-setools
 
 pip install enum34
 pip install hidapi-cffi gphoto2-cffi 
-pip install jpegtran-cffi tornado isbnlib zipstream tornado
+pip install jpegtran-cffi tornado isbnlib zipstream
 pip install lupa --install-option="--no-luajit"
 pip install chdkptp.py
 pip install http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz

@@ -3,6 +3,7 @@
 # Exit on errors
 ORIG_DIR=$(pwd)
 set -e
+set -x
 function print_info()
 {
     green='\e[0;32m'
@@ -180,7 +181,6 @@ for dep in binfmt-support qemu qemu-user-static debootstrap kpartx dmsetup dosfs
   fi
 done
 
-
 # Install debian key
 print_info "Fetching and installing debian public key from $RASBIAN_KEY_URL"
 wget --quiet "$DEBIAN_KEY_URL" -O - | apt-key add - &>> "$LOG"
@@ -193,36 +193,15 @@ print_info "Creating a loopback device for $IMG..."
 lodevice=$(losetup -f --show ${IMG})
 print_info "Loopback $lodevice created."
 
-# Setup up /root partition
-# TODO: fdisk always returns 1, so we have to temporary set +e
 set +e
 # TODO: find other way to verify partitions made (maybe fdisk | wc -l)
-print_info "Creating partitions on $IMG..."
-echo "
-n
-p
-1
 
-
-w
+print_info "Creating partition on $IMG..."
+echo "w
 " | fdisk ${lodevice} &>> "$LOG"
 set -e
 
-# Set up loopback devices
-print_info "Removing $lodevice ..."
-dmsetup remove_all &>> "$LOG"
-losetup -d ${lodevice} &>> "$LOG"
-print_info "Creating device map for $IMG ... "
-device=$(kpartx -va ${IMG} | sed -E 's/.*(loop[0-9])p.*/\1/g' | head -1)
-device="/dev/mapper/${device}"
-print_info "Device map created at $device"
-
-rootp="${device}p1"
-
-# Does rootp exist?
-sleep 5
-print_info "Checking $rootp exists..."
-[ ! -e "$rootp" ] && exit 1
+rootp="${lodevice}"
 
 # Create file systems
 print_info "Creating filesystems on $IMG ..."
@@ -325,7 +304,7 @@ cleanup -clean
 print_info "Successfully created image ${IMG}"
 fbname=$(basename "${IMG}" .img)
 print_info "Compressing ${IMG} to $(date +%s)_$fbname.tgz"
-tar -zcvf $(date +%s)_$fbname.tgz ${IMG}
+tar -zcvf $(date +"%Y-%m-%d")_$fbname.tgz spreadchroot.img
 rm ${IMG}
 trap - EXIT
 exit 0
