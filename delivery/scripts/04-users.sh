@@ -3,13 +3,13 @@ set -e
 set -x
 
 # Create root user
-echo "root:raspberry" | chpasswd
+echo "root:spreads" | chpasswd
 cp "$DELIVERY_DIR/files/bashrc" /root/.bashrc
 
 
 # Create spreads user
 useradd -s /bin/bash -m spreads
-echo "spreads:spreads" |chpasswd
+echo "spreads:changeme" |chpasswd
 cp "$DELIVERY_DIR/files/bashrc" /home/spreads/.bashrc
 mkdir -p /home/spreads/.ssh
 

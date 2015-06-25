@@ -251,7 +251,7 @@ echo "deb ${DEB_MIRROR} ${DEB_RELEASE} main contrib non-free
 
 # Configure Hostname
 print_info "Writing $rootfs/etc/hostname ..."
-echo "spreadchroot" > "$rootfs/etc/hostname"
+echo "localhost" > "$rootfs/etc/hostname"
 
 print_info "Setting up keyboard layout..."
 echo "console-common	console-data/keymap/policy	select	Select keymap from full list
@@ -307,7 +307,8 @@ print_info "Successfully created image ${IMG}"
 fbname=$(basename "${IMG}" .img)
 print_info "Compressing ${IMG} to $(date +%s)_$fbname.tgz"
 timestamp=$(date +"%Y_%m_%d-%H_%M")
-tar -zcvf built/$timestamp"_"$fbname".tgz" spreadchroot.img
+tar -zcvf $timestamp"_"$fbname".tgz" spreadchroot.img
+mv $timestamp"_"$fbname".tgz" built/
 rm ${IMG}
 df -h built/$timestamp"_"$fbname".tgz"
 mv buildlog.txt built/$timestamp"_"$fbname".txt"
