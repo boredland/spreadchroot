@@ -18,7 +18,13 @@ pip install hidapi-cffi gphoto2-cffi
 pip install jpegtran-cffi tornado isbnlib zipstream
 pip install lupa --install-option="--no-luajit"
 pip install chdkptp.py
+
+if [ -e $DELIVERY_DIR/spreads-sdist.tar.gz ]; then
+    pip install $DELIVERY_DIR/spreads-sdist.tar.gz
+else
 pip install http://buildbot.diybookscanner.org/nightly/spreads-latest.tar.gz
+fi
+
 # Create spreads configuration directoy
 mkdir -p /home/spreads/.config/spreads
 mkdir -p /home/spreads/scans
