@@ -95,7 +95,7 @@ if [ -z "$IMAGESIZE" ]; then
 fi
 # Number of compiling threads
 if [ -z "$CORES" ]; then
-    CORES=2
+    CORES=12
 fi
 # Debian version
 if [ -z "$DEB_RELEASE" ]; then
@@ -310,13 +310,13 @@ timestamp=$(date +"%Y_%m_%d-%H_%M")
 tar -zcvf built/$timestamp"_"$fbname".tgz" spreadchroot.img
 rm ${IMG}
 df -h built/$timestamp"_"$fbname".tgz"
-mv buildlog.txt built/$timestamp"_"$fbname"_log.txt"
+mv buildlog.txt built/$timestamp"_"$fbname".txt"
 md5sum built/$timestamp"_"$fbname".tgz" > built/$timestamp"_"$fbname.md5
 rm -f built/*_latest.*
 cd built
-ln -s $timestamp"_"$fbname".tgz" $timestamp"_"$fbname"_latest.tgz"
-ln -s $timestamp"_"$fbname"_log.txt" $fbname"_log_latest.txt"
-ln -s $timestamp"_"$fbname".md5" $fbname"_"$fbname".md5"
+ln -s $timestamp"_"$fbname".tgz" $fbname"_latest.tgz"
+ln -s $timestamp"_"$fbname".txt" $fbname"_latest.txt"
+ln -s $timestamp"_"$fbname".md5" $fbname"_latest.md5"
 cd ..
 trap - EXIT
 exit 0
