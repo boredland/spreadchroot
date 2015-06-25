@@ -53,6 +53,6 @@ pre-installed and pre-configured in full-mode(for use with Canon A2200 cameras r
 
 Login accounts:
     * root:raspberry
-    * spreads:spreads
+    * spreads:changeme
     
 The `spreads` user is allowed to run all commands with superuser privileges through `sudo`.
