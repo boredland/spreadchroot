@@ -33,8 +33,6 @@ To generate an image, run the `build.sh` script as root:
     $ sudo ./build.sh
     
 There are some environment variables that you can set to customize the build:
-`CORES`
-    Threads used for building, since "j" parameter has nasty results on some platforms.
 `IMAGESIZE`
     Target size for the image in MB (default: `4000`)
 `DEB_RELEASE`
@@ -47,8 +45,8 @@ There are some environment variables that you can set to customize the build:
     Public key to enable SSH Login for (default: `~/.ssh/id_rsa.pub`)
 `DEBUG`
     Drop into a chroot shell after the image has finished building (default: `false`)
-`FROM_TARBALL`
-    Path to a spreads tarball created by ``python setup.py sdist``. If unset, install from debian packages.
+`CORES`
+    Threads used for building, since "j" parameter has nasty results on some platforms.
 
 The image will generate a debian image with up-to-date packages and spreads
 pre-installed and pre-configured in full-mode(for use with Canon A2200 cameras running CHDK).
