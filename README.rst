@@ -58,4 +58,4 @@ The `spreads` user is allowed to run all commands with superuser privileges thro
 Donate
 ======
 I really want to port this to the Ainol AX tablet. If you want to support me, make a donation:
-https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8JDA5WLA84VNN
+https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLDSBJXVLC5JL
