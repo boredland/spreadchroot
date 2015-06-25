@@ -8,6 +8,7 @@ http://ec2-52-28-157-49.eu-central-1.compute.amazonaws.com/
 The images are 4Gb large, leaving you a workspace of ~2.5Gb. If you want to resize that, refer to this tutorial :
 http://softwarebakery.com/shrinking-images-on-linux
 or change the imagesize parameter in the build.sh. Keep in mind, that fat32 only supports files up to 4Gb.
+
 Build Requirements
 ==================
 * `git`
