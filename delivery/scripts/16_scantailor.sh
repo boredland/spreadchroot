@@ -11,5 +11,5 @@ set -e
 #make install
 #cd ..
 #rm -r scantailor*
-apt-get -y --force-yes install scantailor 
-
+#apt-get -y --force-yes install scantailor 
+dpkg -i $DELIVERY_DIR/files/scantailor_*_armhf.deb
