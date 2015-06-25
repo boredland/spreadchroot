@@ -1,18 +1,11 @@
 Spreadchroot aims to create a chroot-environment - mainly on android-based devices - to run a full spreads suite. It may be useful for other usecases as a spreads processor or a spreads standalone device.
 
-``Warning: Since some of the depencies (tesseract, jbig2enc, pdfbeads, scantailor) are compiled in your chroot, this will take some time. On a quite powerful machine a first built took me about 2 hours. I'll add some as precompiled packages soon, this will decrease building-time massively.``
-::
-   * `2015-06-24 - removed some steps, runs completely now. got back to init.d for compatibility reasons
-   * `2015-06-23 - First sucessful run. Yet untested.`
-   * `2015-06-22 - removed many compiling steps.`
-   * `2015-06-21 - first build nearly finished.`
-
-You'll find an install guide in the wiki (https://github.com/boredland/spreadchroot/wiki).
+You'll find an setup guide in the wiki (https://github.com/boredland/spreadchroot/wiki).
 
 You'll find ready images at:
 http://ec2-52-28-157-49.eu-central-1.compute.amazonaws.com/
 
-The images are 4Gb large, leaving you a workspace of ~2.5Gb. If you want to resize that, refer to this tutorial:
+The images are 4Gb large, leaving you a workspace of ~2.5Gb. If you want to resize that, refer to this tutorial or change the imagesize parameter in the build.sh:
 http://softwarebakery.com/shrinking-images-on-linux
 
 Build Requirements
@@ -40,7 +33,8 @@ To generate an image, run the `build.sh` script as root:
     $ sudo ./build.sh
     
 There are some environment variables that you can set to customize the build:
-
+`CORES`
+    Threads used for building, since "j" parameter has nasty results on some platforms.
 `IMAGESIZE`
     Target size for the image in MB (default: `4000`)
 `DEB_RELEASE`
