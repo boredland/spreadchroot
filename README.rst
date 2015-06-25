@@ -45,8 +45,6 @@ There are some environment variables that you can set to customize the build:
     Public key to enable SSH Login for (default: `~/.ssh/id_rsa.pub`)
 `DEBUG`
     Drop into a chroot shell after the image has finished building (default: `false`)
-`CORES`
-    Threads used for building, since "j" parameter has nasty results on some platforms.
 
 The image will generate a debian image with up-to-date packages and spreads
 pre-installed and pre-configured in full-mode(for use with Canon A2200 cameras running CHDK).
@@ -56,3 +54,8 @@ Login accounts:
     * spreads:changeme
     
 The `spreads` user is allowed to run all commands with superuser privileges through `sudo`.
+
+Donate
+======
+I really want to port this to the Ainol AX tablet. If you want to support me, make a donation:
+https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8JDA5WLA84VNN
