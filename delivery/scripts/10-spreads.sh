@@ -13,7 +13,7 @@ python-flask python-requests python-wand python-netifaces \
 python-dbus python-ipy python-selinux python-semanage \
 python-sepolgen python-sepolicy python-setools python-enum34 \
 python-tornado python-backports.ssl-match-hostname
-
+pip install tornado
 pip install hidapi-cffi gphoto2-cffi 
 pip install jpegtran-cffi isbnlib zipstream
 pip install lupa --install-option="--no-luajit"
