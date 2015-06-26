@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -x
 set -e
-apt-get -y remove --purge --auto-remove build-essential cmake automake git* libtool \
-libleptonica-dev git-core zlib1g-dev ruby-dev rubygems
+apt-get -y remove --purge --auto-remove build-essential cmake automake git* git-core
 apt-get -y autoremove
 apt-get clean
