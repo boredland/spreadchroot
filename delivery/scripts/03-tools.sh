@@ -5,7 +5,7 @@ set -x
 # Install some basic tools and libraries
 apt-get -y install --no-install-recommends \
     cifs-utils htop less ntp openssh-server sudo nano \
-    bash-completion automake cmake \
+    bash-completion build-essential automake cmake \
     ruby-dev rubygems ruby imagemagick libtool libleptonica-dev git-core zlib1g-dev \
     selinux-basics selinux-utils checkpolicy libapol4 libqpol1 policycoreutils psmisc #linux deploy depencies
     
