@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 set -e
-
+apt-get -y install --no-install-recommends automake
 git clone https://github.com/agl/jbig2enc
 cd jbig2enc
 ./autogen.sh
