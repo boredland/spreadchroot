@@ -95,7 +95,7 @@ if [ -z "$IMAGESIZE" ]; then
 fi
 # Number of compiling threads
 if [ -z "$CORES" ]; then
-    CORES=12
+    CORES=2
 fi
 # Debian version
 if [ -z "$DEB_RELEASE" ]; then
