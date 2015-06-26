@@ -4,7 +4,7 @@ set -x
 
 # Install spreads dependencies
 apt-get -y --force-yes install \
-python2.7-dev python-pip build-essential pkg-config \
+python2.7-dev python-pip pkg-config \
 libffi-dev libturbojpeg-dev libmagickwand-dev python-cffi \
 liblua5.2-dev libusb-dev libgphoto2-dev python-yaml \
 python-colorama python-yaml python-concurrent.futures \
