@@ -3,7 +3,8 @@ Spreadchroot aims to create a chroot-environment - mainly on android-based devic
 You'll find an setup guide in the wiki (https://github.com/boredland/spreadchroot/wiki).
 
 You'll find ready images at:
-http://ec2-52-28-157-49.eu-central-1.compute.amazonaws.com/
+Mirror: https://mega.co.nz/#fm/SZtgXQ6L
+Buildserver: http://ec2-52-28-157-49.eu-central-1.compute.amazonaws.com/
 
 The images are 4Gb large, leaving you a workspace of ~2.5Gb. If you want to resize that, refer to this tutorial :
 http://softwarebakery.com/shrinking-images-on-linux
