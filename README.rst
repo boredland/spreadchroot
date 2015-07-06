@@ -31,7 +31,6 @@ Building
 To generate an image, run the `build.sh` script as root:
 
 ::
-
     $ sudo ./build.sh
     
 There are some environment variables that you can set to customize the build:
