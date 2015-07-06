@@ -91,7 +91,7 @@ fi
 
 # Size of target SD card in MB
 if [ -z "$IMAGESIZE" ]; then
-    IMAGESIZE="1500"
+    IMAGESIZE="2000"
 fi
 # Number of compiling threads
 if [ -z "$CORES" ]; then
