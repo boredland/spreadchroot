@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Exit on errors 
+#test
 ORIG_DIR=$(pwd)
 set -e
 set -x
