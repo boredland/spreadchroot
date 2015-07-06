@@ -313,11 +313,11 @@ rm ${IMG}
 df -h built/$timestamp"_"$fbname".tgz"
 mv buildlog.txt built/$timestamp"_"$fbname".txt"
 md5sum built/$timestamp"_"$fbname".tgz" > built/$timestamp"_"$fbname.md5
-rm -f built/*_latest.*
-cd built
-ln -s $timestamp"_"$fbname".tgz" $fbname"_latest.tgz"
-ln -s $timestamp"_"$fbname".txt" $fbname"_latest.txt"
-ln -s $timestamp"_"$fbname".md5" $fbname"_latest.md5"
-cd ..
+#rm -f built/*_latest.*
+#cd built
+#ln -s $timestamp"_"$fbname".tgz" $fbname"_latest.tgz"
+#ln -s $timestamp"_"$fbname".txt" $fbname"_latest.txt"
+#ln -s $timestamp"_"$fbname".md5" $fbname"_latest.md5"
+#cd ..
 trap - EXIT
 exit 0
