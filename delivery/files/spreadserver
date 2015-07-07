@@ -23,7 +23,7 @@ DESC=$NAME
 LOGFILE="$LOGDIR$NAME.log"
 PIDFILE="/var/run/spread.pid"
 SPREAD='spread web'
-DIRECTORY='/mnt/internal_sd/Spreads/'
+DIRECTORY='/mnt/*_sd/Spreads/'
 if [ -d "$DIRECTORY" ]; then
 MOUNT="su -c \"mount -o bind $DIRECTORY /home/spreads/scans/\" &&"
 fi
