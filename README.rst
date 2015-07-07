@@ -4,7 +4,7 @@ You'll find an setup guide in the wiki (https://github.com/boredland/spreadchroo
 
 You'll find ready images at:
 
-* https://mega.nz/#F!eV9lURzB!5hkcWmLKOWXWg8FZUvKSsQ
+* https://mega.nz/#F!eV9lURzB!yriu6sXFmGuZXWsOIekM0w
 
 The images are 2.5Gb large, leaving you a workspace of ~1Gb. If you want to resize that, refer to this tutorial :
 http://softwarebakery.com/shrinking-images-on-linux
