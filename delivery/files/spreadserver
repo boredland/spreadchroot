@@ -23,7 +23,8 @@ DESC=$NAME
 LOGFILE="$LOGDIR$NAME.log"
 PIDFILE="/var/run/spread.pid"
 SPREAD='spread web'
-CMD="su -l -c \"$SPREAD\" $USER &"
+MOUNT='mount -o bind /mnt/internal_sd/Spreads/ /home/spreads/scans/'
+CMD="su -l -c \"$SPREAD\" $USER & \ $MOUNT"
 
 # Load the VERBOSE setting and other rcS variables
 . /lib/init/vars.sh
