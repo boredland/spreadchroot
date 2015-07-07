@@ -25,9 +25,9 @@ PIDFILE="/var/run/spread.pid"
 SPREAD='spread web'
 DIRECTORY='/mnt/internal_sd/Spreads/'
 if [ -d "$DIRECTORY" ]; then
-MOUNT="\ mount -o bind $DIRECTORY /home/spreads/scans/"
+MOUNT="su -c \"mount -o bind $DIRECTORY /home/spreads/scans/\" &&"
 fi
-CMD="su -l -c \"$SPREAD\" $USER & $MOUNT"
+CMD="$MOUNT su -l -c \"$SPREAD\" $USER &"
 
 # Load the VERBOSE setting and other rcS variables
 . /lib/init/vars.sh
