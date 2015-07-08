@@ -22,13 +22,14 @@ web:
     standalone_device: no
     debug: yes
     postprocessing_server:
-    project_dir: ~/scans
+    project_dir: /mnt/internal_sd/spreads
     port: 2060
 driver: chdkcamera
 plugins:
 - autorotate
 - scantailor
 - tesseract
+- djvubind
 - pdfbeads
 - web
 device:
