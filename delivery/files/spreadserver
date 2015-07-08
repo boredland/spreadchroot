@@ -23,10 +23,11 @@ DESC=$NAME
 LOGFILE="$LOGDIR$NAME.log"
 PIDFILE="/var/run/spread.pid"
 SPREAD='spread web'
-DIRECTORY='/mnt/*_sd/Spreads/'
-if [ -d "$DIRECTORY" ]; then
-MOUNT="su -c \"mount -o bind $DIRECTORY /home/spreads/scans/\" &&"
-fi
+# Acutally this is a MUCH bether way to mount the folder, since it will take internal/external depending on what exists. Skipping that to try if pdfbeads works better without it.
+# DIRECTORY='/mnt/*_sd/Spreads/'
+# if [ -d "$DIRECTORY" ]; then
+# MOUNT="su -c \"mount -o bind $DIRECTORY /home/spreads/scans/\" &&"
+# fi
 CMD="$MOUNT su -l -c \"$SPREAD\" $USER &"
 
 # Load the VERBOSE setting and other rcS variables
