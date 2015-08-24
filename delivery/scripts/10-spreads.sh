@@ -17,7 +17,7 @@ pip install tornado #deb package pyhton-tornado doesn't work
 pip install hidapi-cffi gphoto2-cffi 
 pip install jpegtran-cffi isbnlib zipstream
 pip install lupa --install-option="--no-luajit"
-pip install chdkptp.py
+pip install git+https://github.com/jbaiter/chdkptp.py.git
 
 if [ -e $DELIVERY_DIR/spreads-sdist.tar.gz ]; then
     pip install $DELIVERY_DIR/spreads-sdist.tar.gz
